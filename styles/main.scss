@@ -1,3 +1,13 @@
-@import './_variables';
-@import './_media-queries';
+@import './variables';
+@import './media-queries';
 
+@import './shared/header-comp';
+@import './shared/navigator';
+
+@import './movies/movie-area';
+@import './movies/movie-card';
+
+@import './auth/login/login-page';
+@import './auth/login/login-module';
+@import './auth/register/register-page';
+@import './auth/register/register-module';
