@@ -1,22 +1,22 @@
-@mixin mobile {
+@mixin onMobile {
     @media (max-width: #{$mobile - 1}) {
         @content;
     }
 }
 
-@mixin tablet {
+@mixin onTablet {
     @media (min-width: #{$mobile}) and (max-width: #{$tablet - 1}) {
         @content;
     }
 }
 
-@mixin laptop {
+@mixin onLaptop {
     @media (min-width: #{$tablet}) and (max-width: #{$desktop - 1}) {
         @content;
     }
 }
 
-@mixin desktop {
+@mixin onDesktop {
     @media (min-width: #{$desktop}) {
         @content;
     }

@@ -1,0 +1,15 @@
+@mixin onDarkMode{
+    @content   
+};
+
+@mixin onLightMode{
+    @content   
+};
+
+@mixin flex-center($direction:row) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+    @content
+};
