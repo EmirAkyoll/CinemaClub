@@ -1,8 +1,11 @@
-@import './variables';
-@import './media-queries';
-@import './common-utils';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,300&display=swap');
 
-@import './shared/header-comp';
+@import './common/reset-css';
+@import './common/variables';
+@import './common/media-queries';
+@import './common/common-utils';
+
+@import './shared/header';
 @import './shared/navigator';
 
 @import './movies/movie-area';

@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Navigatior = () => {
+const index = () => {
   return (
     <div>
-      
+      asefa
     </div>
   )
 }
 
-export default Navigatior
+export default index

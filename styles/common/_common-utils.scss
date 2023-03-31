@@ -1,9 +1,13 @@
 @mixin onDarkMode{
-    @content   
+    // @if($themeMode == "dark"){
+        @content
+    // }
 };
 
 @mixin onLightMode{
-    @content   
+    // @if($themeMode == "light"){
+        @content
+    // }   
 };
 
 @mixin flex-center($direction:row) {
