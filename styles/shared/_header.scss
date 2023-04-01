@@ -13,8 +13,14 @@
         @include flex-center(row);
 
         &-text{
+            color: #000;
+
             @include onDarkMode{
                 color: #fff;
+            }
+
+            @include onLightMode{
+                color: #000;
             }
         }
 
