@@ -1,13 +1,15 @@
+// @import '../../pages/_app';
+
 @mixin onDarkMode{
-    // @if($themeMode == "dark"){
+    @if($themeMode == "dark"){
         @content
-    // }
+    }
 };
 
 @mixin onLightMode{
-    // @if($themeMode == "light"){
+    @if($themeMode == "light"){
         @content
-    // }   
+    }   
 };
 
 @mixin flex-center($direction:row) {
