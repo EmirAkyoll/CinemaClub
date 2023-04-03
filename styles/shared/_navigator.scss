@@ -1,5 +1,5 @@
 .navigation{
-    width: 450px;
+    width: 350px;
     @include flex-center(row){
       justify-content: space-between; 
     }
@@ -7,7 +7,7 @@
     &-item{
         font-size: 20px;
         text-decoration: none;
-        color: #000;
+        color: #fff;
     }
 
     &-theme-mode-toggle{

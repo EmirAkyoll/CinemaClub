@@ -1,21 +1,32 @@
-// @import '../../pages/_app';
+// @mixin onDarkMode {
+//   @media (prefers-color-scheme: dark) {
+//     @content;
+//   }
+// };
 
-@mixin onDarkMode{
-    @if($themeMode == "dark"){
-        @content
-    }
-};
-
-@mixin onLightMode{
-    @if($themeMode == "light"){
-        @content
-    }   
-};
+// @mixin onLightMode {
+//   @media (prefers-color-scheme: light) {
+//     @content;
+//   }
+// };
 
 @mixin flex-center($direction:row) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: $direction;
-    @content
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+  @content
 };
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: red;
+  border-radius: 5px;
+}

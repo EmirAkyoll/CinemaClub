@@ -1,0 +1,21 @@
+.movie-card {
+    width: 175px;
+    height: 200px;
+    border: 3px solid #aaa;
+    border-radius: 7px;
+    @include flex-center(column);
+
+    &-middle-line{
+        width: 100%;
+        border-top: 1px solid #bbb;
+    }
+
+    &-image{
+        width: 75px;
+        height: 75px;
+    }
+
+    &-text{
+        color: #fff;
+    }
+}
