@@ -1,7 +1,13 @@
 import React from "react";
 //* Styles coming from '_movie-card.scss'
 
-const MovieCard = ({ movie }) => {
+interface IMovieCardProps {
+    name: string;
+    year: number;
+    director: string;
+}
+
+const MovieCard: React.FC<IMovieCardProps> = ({ movie }) => {
   return (
     <div className="movie-card">
       <img 

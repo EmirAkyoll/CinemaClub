@@ -1,0 +1,5 @@
+.auth-page{
+    padding-top: 15px;
+    height: 65vh;
+    @include flex-center(row);
+}

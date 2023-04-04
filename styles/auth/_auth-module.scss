@@ -1,0 +1,54 @@
+.auth-module{
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 2px solid #888;
+    padding: 40px;
+    @include flex-center(column);
+
+    &-section{
+        padding: 15px;
+        @include flex-center(column){
+            align-items: flex-start;
+        }
+
+        &-label{
+            padding-bottom: 7px;
+        }
+
+        &-textbox{
+            width: 175px;
+            height: 20px;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+    }
+
+    &-text{
+        font-size: 14px;
+        
+        &-route{
+            text-decoration: none;
+            margin-left: 5px;
+            color: #2b5af5;
+        }
+    }
+    
+    &-button{
+        margin-top: 30px;
+        padding: 9px;
+        color: #fff;
+        border: 1px solid #fff;
+        background-color: #050916;
+        margin-right: 17px;
+        border-radius: 3px;
+        cursor: pointer;
+        float: right;
+
+        &:hover{
+            background-color: #101d45;
+        }
+    }
+}
