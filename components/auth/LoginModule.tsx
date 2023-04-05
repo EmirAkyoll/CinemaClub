@@ -5,7 +5,7 @@ const LoginModule = () => {
   return (
     <div className='auth-module'>
       <div className='auth-module-section'>
-        <label for="username" className='auth-module-section-label'>User Name</label>
+        <label htmlFor="username" className='auth-module-section-label'>User Name</label>
         <input 
             type="text" 
             id="username" 
@@ -16,7 +16,7 @@ const LoginModule = () => {
       </div>
 
       <div className='auth-module-section'>
-        <label for="password" className='auth-module-section-label'>Password</label>
+        <label htmlFor="password" className='auth-module-section-label'>Password</label>
         <input 
             type="text" 
             id="password" 

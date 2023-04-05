@@ -5,7 +5,7 @@ const RegisterModule = () => {
   return (
     <div className="auth-module">
       <div className="auth-module-section">
-        <label for="username" className="auth-module-section-label">User Name</label>
+        <label htmlFor="username" className="auth-module-section-label">User Name</label>
         <input
           type="text"
           id="username"
@@ -16,7 +16,7 @@ const RegisterModule = () => {
       </div>
 
       <div className="auth-module-section">
-        <label for="password" className="auth-module-section-label">Password</label>
+        <label htmlFor="password" className="auth-module-section-label">Password</label>
         <input
           type="text"
           id="password"
@@ -27,11 +27,11 @@ const RegisterModule = () => {
       </div>
 
       <div className="auth-module-section">
-        <label for="password" className="auth-module-section-label">E-mail</label>
+        <label htmlFor="mail" className="auth-module-section-label">E-mail</label>
         <input
           type="email"
-          id="password"
-          name="password"
+          id="mail"
+          name="mail"
           className="auth-module-section-textbox"
           placeholder="Enter your e-mail.."
         />
