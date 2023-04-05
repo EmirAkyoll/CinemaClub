@@ -13,7 +13,7 @@ export const newAdviceSchema = Yup.object({
   publish_year: Yup.number()
     .required("Publish year is required."),
 
-  imbd_score: Yup.number()
+  imdb_score: Yup.number()
     .required("IMBD score is required."),
 
   director: Yup.string()
