@@ -74,7 +74,7 @@ const index = () => {
 
   return (
     <>
-      {/* <AddMovieAdviceModal /> */}
+      <AddMovieAdviceModal />
       <MovieField movies={movies} />
     </>
   );
