@@ -6,7 +6,7 @@ const AddMovieAdviceModal = () => {
     <div className="modal">
       <div className="modal-header">Add New Movie Advice</div>
 
-      <form className="modal-sections-wrapper">
+      <div className="modal-sections-wrapper">
         <div className="modal-sections-wrapper-section">
           <div className="modal-sections-wrapper-section-item">
             <label htmlFor="movie-name" className="modal-sections-wrapper-section-item-label">
@@ -88,22 +88,52 @@ const AddMovieAdviceModal = () => {
             />
           </div>
         </div>
-      </form>
+      </div>
 
-      <div className="modal-sections-wrapper-section-item">
-        <label htmlFor="movie-banner" className="modal-sections-wrapper-section-item-label">
+      <div className="modal-url-box">
+        <label htmlFor="movie-banner" className="modal-sections-wrapper-section-item-label | modal-url-box-label">
           Banner URL:
         </label>
         <input
           type="text"
           id="movie-banner"
           name="movie-banner"
-          className="modal-sections-wrapper-section-item-textbox"
+          className="modal-sections-wrapper-section-item-textbox | modal-url-box-textbox"
           placeholder="Enter banner url .."
         />
       </div>
 
-      <button className="modal-button">Add</button>
+      <div className="modal-text-areas">
+        <span className="modal-text-areas-item">
+          <label htmlFor="movie-banner" className="modal-text-areas-item-label">
+            Summary:
+          </label>
+          <textarea 
+            name="movie-summary" 
+            id="movie-summary" 
+            cols={30} 
+            rows={10}
+            className="modal-text-areas-item-text-area"
+            placeholder="Enter summary.."
+          ></textarea>
+        </span>
+
+        <span className="modal-text-areas-item">
+          <label htmlFor="movie-banner" className="modal-text-areas-item-label">
+            Story Shortly:
+          </label>
+          <textarea 
+            name="movie-story-shortly" 
+            id="movie-story-shortly" 
+            cols={30} 
+            rows={10}
+            className="modal-text-areas-item-text-area"
+            placeholder="Enter story.."
+          ></textarea>
+        </span>
+      </div>
+
+      <button className="modal-button">Send</button>
     </div>
   );
 };
