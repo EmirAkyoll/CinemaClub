@@ -3,7 +3,7 @@ import Navigator from "./Navigator";
 import Image from "next/image";
 //* Styles coming from '_header-comp.scss'
 
-const Header = () => {
+const Header: React.FC = () => {
   return (
     <header className="header">
       <span className="header-logo">

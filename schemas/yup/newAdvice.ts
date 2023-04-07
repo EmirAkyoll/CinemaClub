@@ -19,8 +19,11 @@ export const newAdviceSchema = Yup.object({
   director: Yup.string()
     .required("IMBD score is required."),
 
-  banner_url: Yup.string()
-    .required("Banner URL is required."),
+  banner_url_first: Yup.string()
+    .required("First Banner URL is required."),
+
+  banner_url_second: Yup.string()
+    .required("Second Banner URL is required."),
  
   summary: Yup.string()
     .required("Summary is required."),

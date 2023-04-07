@@ -1,5 +1,5 @@
 .modal {
-    width: 50vw;
+    width: 35vw;
     font-family: 'Roboto', sans-serif;
     color: #fff;
     font-size: 18px;
@@ -23,7 +23,7 @@
 
             &-item {
                 margin: 15px;
-                margin-bottom: 20px;
+                margin-bottom: 10px;
                 margin-top: 20px;
 
                 &-label {}
@@ -40,16 +40,20 @@
 
     }
 
-    &-url-box{
+    &-banner-urls{
         width: 425px;
 
-        &-label {
-            margin-left: -7px;
-        }
+        &-item{
+            margin-bottom: 25px;
 
-        &-textbox {
-            width: 100%;
-            margin-left: -7px;     
+            &-label {
+                margin-left: -7px;
+            }
+    
+            &-textbox {
+                width: 100%;
+                margin-left: -7px;     
+            }
         }
     }
 

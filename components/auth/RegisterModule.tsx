@@ -1,7 +1,7 @@
 import React from "react";
 //* Styles coming from '_auth-module.scss'
 
-const RegisterModule = () => {
+const RegisterModule: React.FC = () => {
   return (
     <div className="auth-module">
       <div className="auth-module-section">

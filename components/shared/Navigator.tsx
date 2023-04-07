@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 //* Styles coming from '_navigator.scss'
 
-const Navigator = () => {
+const Navigator: React.FC = () => {
   return (
     <nav className="navigation">
       <a href="#" className="navigation-item">

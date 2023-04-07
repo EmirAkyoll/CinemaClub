@@ -6,9 +6,12 @@ import AddMovieAdviceModal from "../../components/movies/AddMovieAdviceModal";
 const index = () => {
   const movies: IMovie[] = [
     {
-      name: "A filmi",
-      publish_year: 1967,
-      director: "someone 1",
+      name: "I Am Mother",
+      publish_year: 2019,
+      director: "Grant Sputore",
+      time: "1:53:00",
+      banner_url_first: "https://images.squarespace-cdn.com/content/v1/5cf511b17678c90001d8d6e6/1609271726759-2IX0XJIHF9HTPKZ3VC7P/Raging_Bull_1sht_900x611px.jpg",
+      banner_url_second: "https://m.media-amazon.com/images/M/MV5BMTkxMTczNTA4Nl5BMl5BanBnXkFtZTgwNDAyMzgwODM@._V1_.jpg"
     },
     {
       name: "B filmi",
@@ -74,7 +77,7 @@ const index = () => {
 
   return (
     <>
-      <AddMovieAdviceModal />
+      {/* <AddMovieAdviceModal /> */}
       <MovieField movies={movies} />
     </>
   );

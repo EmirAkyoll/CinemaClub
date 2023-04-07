@@ -29,7 +29,12 @@ export const movie_advice_schema = {
         required: true,
     },
 
-    bannerUrl: {
+    bannerUrlFirst: {
+        type: String,
+        required: true,
+    },
+
+    bannerUrlSecond: {
         type: String,
         required: true,
     },

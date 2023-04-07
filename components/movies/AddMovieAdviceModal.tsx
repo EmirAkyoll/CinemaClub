@@ -1,7 +1,7 @@
 import React from "react";
 //* Styles coming from '_add-movie-advice-modal.scss'
 
-const AddMovieAdviceModal = () => {
+const AddMovieAdviceModal: React.FC = () => {
   return (
     <div className="modal">
       <div className="modal-header">Add New Movie Advice</div>
@@ -90,22 +90,37 @@ const AddMovieAdviceModal = () => {
         </div>
       </div>
 
-      <div className="modal-url-box">
-        <label htmlFor="movie-banner" className="modal-sections-wrapper-section-item-label | modal-url-box-label">
-          Banner URL:
-        </label>
-        <input
-          type="text"
-          id="movie-banner"
-          name="movie-banner"
-          className="modal-sections-wrapper-section-item-textbox | modal-url-box-textbox"
-          placeholder="Enter banner url .."
-        />
+      <div className="modal-banner-urls">
+        <div className="modal-banner-urls-item">
+          <label htmlFor="movie-banner-first" className="modal-banner-urls-item-label">
+            Banner URL (First):
+          </label>
+          <input
+            type="text"
+            id="movie-banner-first"
+            name="movie-banner-first"
+            className="modal-banner-urls-item-textbox | modal-sections-wrapper-section-item-textbox"
+            placeholder="Enter first banner url .."
+          />
+        </div>
+
+        <div className="modal-banner-urls-item">
+          <label htmlFor="movie-banner-second" className="modal-banner-urls-item-label">
+            Banner URL (Second):
+          </label>
+          <input
+            type="text"
+            id="movie-banner-second"
+            name="movie-banner-second"
+            className="modal-banner-urls-item-textbox | modal-sections-wrapper-section-item-textbox"
+            placeholder="Enter second banner url .."
+          />
+        </div>
       </div>
 
       <div className="modal-text-areas">
         <span className="modal-text-areas-item">
-          <label htmlFor="movie-banner" className="modal-text-areas-item-label">
+          <label htmlFor="movie-summary" className="modal-text-areas-item-label">
             Summary:
           </label>
           <textarea 
@@ -119,7 +134,7 @@ const AddMovieAdviceModal = () => {
         </span>
 
         <span className="modal-text-areas-item">
-          <label htmlFor="movie-banner" className="modal-text-areas-item-label">
+          <label htmlFor="movie-story-shortly" className="modal-text-areas-item-label">
             Story Shortly:
           </label>
           <textarea 
