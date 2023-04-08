@@ -15,6 +15,12 @@ export const newAdviceSchema = Yup.object({
 
   imdb_score: Yup.number()
     .required("IMBD score is required."),
+    
+  likes: Yup.number()
+    .required("Like score is required."),
+
+  dislikes: Yup.number()
+    .required("Dislike score is required."),
 
   director: Yup.string()
     .required("IMBD score is required."),

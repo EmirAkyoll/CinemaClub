@@ -24,6 +24,16 @@ export const movie_advice_schema = {
         required: true,
     },
 
+    likes: {
+        type: Number,
+        required: true,
+    },
+
+    dislikes: {
+        type: Number,
+        required: true,
+    },
+
     director: {
         type: String,
         required: true,

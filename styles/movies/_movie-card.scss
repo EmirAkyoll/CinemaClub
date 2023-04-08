@@ -6,31 +6,86 @@
     border-top: 1px solid #444;
     border-radius: 7px;
     padding-bottom: 10px;
+    position: relative;
     @include flex-center(column){
         justify-content: end;
     }
-    
+
+    &:hover{
+        .movie-card-scores-item{
+            width: 65px;
+            transition: width 0.35s ease;
+        }
+
+        .movie-card-upstairs-image-first{
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .movie-card-upstairs-image-second{
+            opacity: 1;
+            transition: opacity 0.35s ease;
+        }
+
+        .movie-card-scores-likes-score,
+        .movie-card-scores-dislikes-score{
+            display: block;
+        }
+    }
+    &:not(:hover){
+        .movie-card-scores-item{
+            width: 21px;
+            transition: width 0.35s ease;
+        }
+
+        .movie-card-upstairs-image-first{
+            opacity: 1;
+            transition: opacity 0.35s ease;
+        }
+
+        .movie-card-upstairs-image-second{
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+    }
+
     &-upstairs{
         position: relative;
 
         &-time{
-            color: #fff;
+            color: #000;
+            border-radius: 3px;
             background-color: #112;
             position: absolute;
-            bottom: -5px;
-            left: -10px;
+            bottom: 0;
+            left: -108px;
+            background-color: #ebc8b2;
             padding: 4px;
         }
     
         &-image{
-            width: 200px;
-            max-height: 270px;
+            // position: relative;W
+
+            &-item{
+                width: 200px;
+                height: 270px;
+                position: absolute;
+                bottom: 0;
+                left: -100px;
+            }
+
+            &-first{
+                opacity: 1;
+            }
+            
+            &-second{
+                opacity: 0;
+            }
         }
     }
 
     &-middle-line{
-        // margin-top: 20px;
-        width: 100%;
+        width: 90%;
         border-top: 1px solid #222;
     }
 
@@ -46,7 +101,53 @@
     }
 
     &-year{
-        // font-size: 22px;
         margin-bottom: 10px;
+    }
+
+    &-scores{
+        position: absolute;
+        bottom: -22px;
+        right: 5px;
+        @include flex-center(row);
+
+        &-item{
+            cursor: pointer;
+            border-radius: 5px;
+            color: #000;
+            background-color: #debda8;
+            padding: 5px;    
+            border: 1px solid #aaa;
+            @include flex-center(row){
+                justify-content: space-between;
+            }
+
+            &:hover{
+                background-color: #fae6cf;
+            }
+
+            &-icon{
+                margin-right: 5px;
+            }
+
+            &-score{
+                display: none;
+                margin-right: 2px;
+            }
+        }
+
+        &-likes{
+            margin-right: 2px;
+
+            &-icon{}
+
+            &-score{}
+        }
+        
+        &-dislikes{
+
+            &-icon{}
+
+            &-score{}
+        }
     }
 }
