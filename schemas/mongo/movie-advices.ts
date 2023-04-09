@@ -1,4 +1,9 @@
 export const movie_advice_schema = {
+    id: {
+        type: String,
+        required: true, 
+    },
+
     movieName: {
         type: String,
         required: true,
@@ -20,7 +25,7 @@ export const movie_advice_schema = {
     },
 
     imdbScore: {
-        type: Number,
+        type: String,
         required: true,
     },
 

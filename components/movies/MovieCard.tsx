@@ -1,4 +1,5 @@
 import React from "react";
+import Link from 'next/link';
 import { IMovieCardProps } from "@/interfaces/imovies";
 import { AiFillLike, AiFillDislike } from "react-icons/ai";
 //* Styles coming from '_movie-card.scss'
@@ -10,12 +11,12 @@ const MovieCard: React.FC<IMovieCardProps> = ({ movie }) => {
       <div className="movie-card-upstairs">
         <img
           src={movie.banner_url_first}
-          alt="movie-icons"
+          alt=""
           className="movie-card-upstairs-image-item | movie-card-upstairs-image-first"
         />
         <img
           src={movie.banner_url_second} 
-          alt="movie-icons" 
+          alt="" 
           className="movie-card-upstairs-image-item | movie-card-upstairs-image-second"
         />
         <span className="movie-card-upstairs-time">{movie.time}</span>
@@ -24,6 +25,17 @@ const MovieCard: React.FC<IMovieCardProps> = ({ movie }) => {
       <div className="movie-card-name movie-card-text">{movie.name}</div>
       <div className="movie-card-year movie-card-text">
         {movie.publish_year}
+      </div>
+
+      <div className="movie-card-imdb">
+        <img 
+          src="/imdb-icon.png" 
+          alt="imdb icon" 
+          className="movie-card-imdb-image"
+        />
+        <span className="movie-card-imdb-score">
+          {movie.imdb_score}
+        </span>
       </div>
 
       <div className="movie-card-scores">

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { BiPlus, BiMoviePlay } from "react-icons/bi";
 //* Styles coming from '_navigator.scss'
 
 const Navigator: React.FC = () => {
@@ -13,6 +14,11 @@ const Navigator: React.FC = () => {
       <a href="#" className="navigation-item">
         Nakkara
       </a>
+
+      <button className="navigation-button">
+        <BiPlus />
+        <BiMoviePlay />
+      </button>
     </nav>
   );
 };

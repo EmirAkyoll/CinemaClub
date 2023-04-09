@@ -12,6 +12,7 @@ const index = () => {
       time: "1:53:00",
       likes: 1279,
       dislikes: 4,
+      imdb_score: "6.7/10",
       banner_url_first: "https://images.squarespace-cdn.com/content/v1/5cf511b17678c90001d8d6e6/1609271726759-2IX0XJIHF9HTPKZ3VC7P/Raging_Bull_1sht_900x611px.jpg",
       banner_url_second: "https://m.media-amazon.com/images/M/MV5BMTkxMTczNTA4Nl5BMl5BanBnXkFtZTgwNDAyMzgwODM@._V1_.jpg"
     },
@@ -22,6 +23,7 @@ const index = () => {
       time: "3:14:00",
       likes: 56728,
       dislikes: 17,
+      imdb_score: "7.9/10",
       banner_url_first: "https://pbs.twimg.com/media/Fon8-EDXsAEv8T1?format=jpg&name=large",
       banner_url_second: "https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUtMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_.jpg"
     },
@@ -32,6 +34,7 @@ const index = () => {
       time: "2:55:00",
       likes: 27461,
       dislikes: 7,
+      imdb_score: "9.2/10",
       banner_url_first: "https://http2.mlstatic.com/D_NQ_NP_757308-MLA52604378004_112022-O.jpg",
       banner_url_second: "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/714ZOEiVNtL._RI_.jpg"
     },

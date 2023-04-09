@@ -1,10 +1,11 @@
 export interface IMovie {
+  id?: string;
   name: string;
   banner_url_first?: string;
   banner_url_second?: string;
   time?: string;
   publish_year: number;
-  imdb_score?: number;
+  imdb_score?: string;
   likes?: number;
   dislikes?: number;
   genre?: string;

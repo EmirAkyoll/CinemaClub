@@ -13,18 +13,19 @@
 
     &:hover{
         .movie-card-scores-item{
-            width: 65px;
-            transition: width 0.35s ease;
+            min-width: 1px;
+            max-width: 65px;
+            transition: max-width 0.3s ease;
         }
 
         .movie-card-upstairs-image-first{
             opacity: 0;
-            transition: opacity 0.35s ease;
+            transition: opacity 0.3s ease;
         }
 
         .movie-card-upstairs-image-second{
             opacity: 1;
-            transition: opacity 0.35s ease;
+            transition: opacity 0.3s ease;
         }
 
         .movie-card-scores-likes-score,
@@ -34,18 +35,19 @@
     }
     &:not(:hover){
         .movie-card-scores-item{
-            width: 21px;
-            transition: width 0.35s ease;
+            min-width: 1px;
+            max-width: 65px;
+            transition: max-width 0.3s ease;
         }
 
         .movie-card-upstairs-image-first{
             opacity: 1;
-            transition: opacity 0.35s ease;
+            transition: opacity 0.3s ease;
         }
 
         .movie-card-upstairs-image-second{
             opacity: 0;
-            transition: opacity 0.35s ease;
+            transition: opacity 0.3s ease;
         }
     }
 
@@ -62,7 +64,7 @@
             background-color: #ebc8b2;
             padding: 4px;
         }
-    
+
         &-image{
             // position: relative;W
 
@@ -96,12 +98,34 @@
 
     &-name{
         font-size: 22px;
-        margin-bottom: 10px;
+        // margin-bottom: 10px;
         margin-top: 5px;
     }
 
     &-year{
-        margin-bottom: 10px;
+        margin: 10px 0;
+        // margin-bottom: 10px;
+    }
+
+    &-imdb{
+        background-color: #050916;
+        z-index: 5;
+        border-radius: 5px;
+        padding-right: 7px;
+        position: absolute;
+        bottom: -20px;
+        left: -15px;
+        @include flex-center(column);
+
+        &-image{
+            width: 40px;
+            // margin-right: 5px;
+        }
+
+        &-score{
+            // color: #fff;
+            color: #f8c57a;
+        }
     }
 
     &-scores{
@@ -111,6 +135,8 @@
         @include flex-center(row);
 
         &-item{
+            min-width: 1px;
+            max-width: 65px;
             cursor: pointer;
             border-radius: 5px;
             color: #000;
@@ -138,16 +164,16 @@
         &-likes{
             margin-right: 2px;
 
-            &-icon{}
+            // &-icon{}
 
-            &-score{}
+            // &-score{}
         }
         
-        &-dislikes{
+        // &-dislikes{
 
-            &-icon{}
+        //     &-icon{}
 
-            &-score{}
-        }
+        //     &-score{}
+        // }
     }
 }
