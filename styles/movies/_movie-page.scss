@@ -1,0 +1,42 @@
+.movie-page{
+    padding-top: 40px;
+    background-color: #000;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    padding-top: 90px;
+    padding-bottom: 150px;
+    @include flex-center(column);
+
+    &-header{
+        color: $white;
+        font-size: 50px;
+        margin-top: 20px;
+        margin-bottom: 45px;
+    }
+
+    &-banners{
+        @include flex-center(row);
+        gap: 100px;
+
+        &-item{
+            width: 250px;
+            height: 350px;
+        }
+    }
+
+    &-texts{    
+        color: $white;
+        max-width: 60%;
+        margin-top: 55px;
+        @include flex-center(column);
+        gap: 30px;
+
+        &-item{
+            text-align: justify;
+            line-height: 25px;
+        }
+    }
+
+    &-comments{}
+}

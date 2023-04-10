@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { movie_advice_schema } from "../schemas/mongo/movie-advices";
+import { movie_advice_schema } from "../schemas/movie-advices";
 
 const MovieAdviceSchema = new mongoose.Schema(movie_advice_schema, { timestamps: true });
 

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { user_schema } from "../schemas/mongo/users";
+import { user_schema } from "../schemas/users";
 
 const UserSchema = new mongoose.Schema(user_schema, { timestamps: true });
 

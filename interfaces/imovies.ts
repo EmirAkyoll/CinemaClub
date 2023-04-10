@@ -1,14 +1,14 @@
 export interface IMovie {
   id?: string;
-  name: string;
+  title: string;
   banner_url_first?: string;
   banner_url_second?: string;
-  time?: string;
-  publish_year: number;
-  imdb_score?: string;
+  duration?: string;
+  release_year: number;
+  imdb_rating?: string;
   likes?: number;
   dislikes?: number;
-  genre?: string;
+  genre?: string[];
   director?: string;
   summary?: string;
   story_shortly?: string;

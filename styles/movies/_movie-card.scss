@@ -7,15 +7,15 @@
     border-radius: 7px;
     padding-bottom: 10px;
     position: relative;
+    cursor: pointer;
     @include flex-center(column){
         justify-content: end;
     }
 
     &:hover{
         .movie-card-scores-item{
-            min-width: 1px;
-            max-width: 65px;
-            transition: max-width 0.3s ease;
+            width: 65px ;
+            transition: width 0.3s ease;
         }
 
         .movie-card-upstairs-image-first{
@@ -35,9 +35,8 @@
     }
     &:not(:hover){
         .movie-card-scores-item{
-            min-width: 1px;
-            max-width: 65px;
-            transition: max-width 0.3s ease;
+            width: 21px;
+            transition: width 0.3s ease;
         }
 
         .movie-card-upstairs-image-first{
@@ -108,7 +107,7 @@
     }
 
     &-imdb{
-        background-color: #050916;
+        background-color: $black;
         z-index: 5;
         border-radius: 5px;
         padding-right: 7px;
@@ -135,8 +134,7 @@
         @include flex-center(row);
 
         &-item{
-            min-width: 1px;
-            max-width: 65px;
+            max-width: 70%;
             cursor: pointer;
             border-radius: 5px;
             color: #000;

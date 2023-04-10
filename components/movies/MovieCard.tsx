@@ -19,12 +19,12 @@ const MovieCard: React.FC<IMovieCardProps> = ({ movie }) => {
           alt="" 
           className="movie-card-upstairs-image-item | movie-card-upstairs-image-second"
         />
-        <span className="movie-card-upstairs-time">{movie.time}</span>
+        <span className="movie-card-upstairs-time">{movie.duration}</span>
       </div>
       <hr className="movie-card-middle-line" />
-      <div className="movie-card-name movie-card-text">{movie.name}</div>
+      <div className="movie-card-name movie-card-text">{movie.title}</div>
       <div className="movie-card-year movie-card-text">
-        {movie.publish_year}
+        {movie.release_year}
       </div>
 
       <div className="movie-card-imdb">
@@ -34,7 +34,7 @@ const MovieCard: React.FC<IMovieCardProps> = ({ movie }) => {
           className="movie-card-imdb-image"
         />
         <span className="movie-card-imdb-score">
-          {movie.imdb_score}
+          {movie.imdb_rating}
         </span>
       </div>
 
