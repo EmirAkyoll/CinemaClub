@@ -1,5 +1,5 @@
 import Head from "next/head";
-import HomePage from "./home";
+import Movies from "./movies/index";
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
         <title>Movie Advicer</title>
       </Head>
       <main>
-        <HomePage />
+        <Movies />
       </main>
     </>
   );

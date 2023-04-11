@@ -8,7 +8,7 @@ const MovieField: React.FC<IMovieCardsProps> = ({ movies }) => {
     <div className="movie-field">
       <div className="movie-field-cards">
         {movies.map((movie) => (
-          <MovieCard movie={movie} />
+          <MovieCard key={movie?.title} movie={movie} />
         ))}
       </div>
     </div>

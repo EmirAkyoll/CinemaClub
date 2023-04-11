@@ -2,9 +2,8 @@ import React from "react";
 import MovieField from "../../components/movies/MovieField";
 import { IMovie } from "@/interfaces/imovies";
 import AddMovieAdviceModal from "../../components/movies/AddMovieAdviceModal";
-// summary: "",
-// story_shortly: ""
-const index = () => {
+
+const Movies = () => {
   const movies: IMovie[] = [
     {
       title: "I Am Mother",
@@ -153,4 +152,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Movies;
