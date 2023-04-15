@@ -1,5 +1,5 @@
 export interface IMovie {
-  id?: string;
+  _id?: string;
   title: string;
   banner_url_first?: string;
   banner_url_second?: string;

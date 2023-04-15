@@ -1,30 +1,30 @@
 export const movie_advice_schema = {
-    id: {
+    _id: {
         type: String,
         required: true, 
     },
 
-    movieName: {
+    title: {
         type: String,
         required: true,
     },
 
     genre: {
-        type: String,
+        type: [String],
         required: true,
     },
     
-    time: {
+    duration: {
+        type: String,
+        required: true,
+    },
+
+    releaseYear: {
         type: Number,
         required: true,
     },
 
-    publishYear: {
-        type: Number,
-        required: true,
-    },
-
-    imdbScore: {
+    imdbRating: {
         type: String,
         required: true,
     },

@@ -5,7 +5,7 @@ import { AiFillLike, AiFillDislike } from "react-icons/ai";
 //* Styles coming from '_movie-card.scss'
 
 const MovieCard: React.FC<IMovieCardProps> = ({ movie }) => {
-  
+
   return (
     <Link href={`/movies/${movie.title.toLowerCase()}`}>
       <div className="movie-card">

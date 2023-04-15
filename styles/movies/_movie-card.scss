@@ -9,7 +9,7 @@
     position: relative;
     cursor: pointer;
     @include flex-center(column){
-        justify-content: end;
+        justify-content: flex-end;
     }
 
     &:hover{
