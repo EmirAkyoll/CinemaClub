@@ -1,13 +1,13 @@
 import React from "react";
-import Link from "next/link";
 import { IMovieCardProps } from "@/interfaces/imovies";
 import { AiFillLike, AiFillDislike } from "react-icons/ai";
+import Link from "next/link";
 //* Styles coming from '_movie-card.scss'
 
 const MovieCard: React.FC<IMovieCardProps> = ({ movie }) => {
 
   return (
-    <Link href={`/movies/${movie.title.toLowerCase()}`}>
+    <Link href={`/movies/${movie._id}`}>
       <div className="movie-card">
         <div className="movie-card-upstairs">
           <img

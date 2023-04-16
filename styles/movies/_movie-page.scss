@@ -1,4 +1,4 @@
-.movie-page{
+.movie-page {
     padding-top: 40px;
     background-color: #000;
     height: 100vh;
@@ -6,37 +6,44 @@
     font-size: 20px;
     padding-top: 90px;
     padding-bottom: 150px;
+    position: relative;
     @include flex-center(column);
 
-    &-header{
+    &-header {
         color: $white;
+        text-stroke: 0.8px $white;
+        -webkit-text-stroke: 0.8px $white; /* Safari için gerekli */
+        background-color: $black;
         font-size: 50px;
-        margin-top: 20px;
-        margin-bottom: 45px;
+        padding: 15px;
+        margin-bottom: 30px;
+        border-radius: 0 0 30px 30px;
+        position: sticky;
+        top: calc(0vh + 115px); //'115px' is "Header"s height, look at '_header.scss'
     }
 
-    &-banners{
+    &-banners {
         @include flex-center(row);
         gap: 100px;
 
-        &-item{
+        &-item {
             width: 250px;
             height: 350px;
         }
     }
 
-    &-texts{    
+    &-texts {
         color: $white;
         max-width: 60%;
         margin-top: 55px;
         @include flex-center(column);
         gap: 30px;
 
-        &-item{
+        &-item {
             text-align: justify;
             line-height: 25px;
         }
     }
 
-    &-comments{}
+    &-comments {}
 }

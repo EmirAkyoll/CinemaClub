@@ -1,5 +1,5 @@
-import MovieAdvice from "@/db/models/MovieAdvice";
-import dbConnect from "@/db/utils/dbConnect";
+import MovieAdvice from "../../..//db/models/MovieAdvice";
+import dbConnect from "../../../db/utils/dbConnect";
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {

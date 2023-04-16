@@ -4,6 +4,7 @@ import { IMovieCardsProps } from "@/interfaces/imovies";
 //* Styles coming from '_movie-field.scss'
 
 const MovieField: React.FC<IMovieCardsProps> = ({ movies }) => {
+  
   console.log(movies)
   return (
     <div className="movie-field">

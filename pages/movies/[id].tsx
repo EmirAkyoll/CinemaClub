@@ -1,18 +1,22 @@
 import React from "react";
+import axios from "axios";
+import { IMovie } from "@/interfaces/imovies";
 
-const Movie = () => {
+const Movie: React.FC<IMovie | any> = ({ movie }) => {
+  console.log(movie);
+
   return (
     <div className="movie-page">
-      <h1 className="movie-page-header">TITANIC</h1>
+      <h1 className="movie-page-header">{movie.title}</h1>
       
       <div className="movie-page-banners">
         <img
-          src="https://pbs.twimg.com/media/Fon8-EDXsAEv8T1?format=jpg&name=large"
+          src={movie.banner_url_first}
           alt=""
           className="movie-page-banners-item"
         />
         <img
-          src="https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUtMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_.jpg"
+          src={movie.banner_url_second}
           alt=""
           className="movie-page-banners-item"
         />
@@ -20,26 +24,10 @@ const Movie = () => {
 
       <div className="movie-page-texts">
         <p className="movie-page-texts-item">
-          The film is a fictionalized retelling of the sinking of the RMS
-          Titanic, a luxurious passenger liner that sank on its maiden voyage in
-          1912. The story follows the romance between a wealthy woman named Rose
-          (Kate Winslet) and a poor artist named Jack (Leonardo DiCaprio) who
-          fall in love aboard the ship, but are separated by their social
-          differences when the Titanic hits an iceberg and begins to sink.
+          {movie.summary}
         </p>
         <p className="movie-page-texts-item">
-          Written and directed by James Cameron, the film tells the story of the
-          Titanic, a luxurious passenger liner that sinks on its maiden voyage
-          after hitting an iceberg. The main characters are Rose, a wealthy
-          young woman who is engaged to a wealthy but cruel man, and Jack, a
-          poor artist who wins a ticket to board the Titanic in a card game.
-          Rose and Jack fall in love on the ship, but their romance is
-          challenged by their differing social classes. When the Titanic hits an
-          iceberg and begins to sink, Rose and Jack must fight for survival
-          while also trying to escape the ship and be reunited with each other.
-          The film is notable for its stunning special effects and its portrayal
-          of the ship's sinking, as well as for its iconic theme song, 'My Heart
-          Will Go On' by Celine Dion.
+          {movie.story_shortly}
         </p>
       </div>
 
@@ -48,14 +36,15 @@ const Movie = () => {
   );
 };
 
-// export const getServerSideProps = async ({ params }) => {
-//     const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/movies/${params.id}`);
+export const getServerSideProps = async ({ params }: any) => {
+  const res = await axios.get(`http://localhost:3000/api/movies/${params.id}`);
+  const chosen_movie = res.data;
 
-//     return {
-//       props: {
-//         movies: res.data ? res.data : null,
-//       },
-//     };
-// };
+    return {
+      props: {
+        movie: chosen_movie ? chosen_movie : null,
+      },
+    };
+};
 
 export default Movie;
