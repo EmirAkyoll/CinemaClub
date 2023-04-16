@@ -19,12 +19,12 @@ export const movie_advice_schema = {
         required: true,
     },
 
-    releaseYear: {
+    release_year: {
         type: Number,
         required: true,
     },
 
-    imdbRating: {
+    imdb_rating: {
         type: String,
         required: true,
     },
@@ -44,12 +44,12 @@ export const movie_advice_schema = {
         required: true,
     },
 
-    bannerUrlFirst: {
+    banner_url_first: {
         type: String,
         required: true,
     },
 
-    bannerUrlSecond: {
+    banner_url_second: {
         type: String,
         required: true,
     },
@@ -59,7 +59,7 @@ export const movie_advice_schema = {
         required: true,
     },
 
-    storyShortly: {
+    story_shortly: {
         type: String,
         required: true,
     },

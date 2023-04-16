@@ -1,7 +1,10 @@
+// import React from "react";
 import Head from "next/head";
 import Movies from "./movies/index";
+import axios from "axios";
+import { IMovieCardsProps } from "@/interfaces/imovies";
 
-export default function Home() {
+export default function Home({movies}: IMovieCardsProps) {
   return (
     <>
       <Head>
@@ -11,8 +14,19 @@ export default function Home() {
         <title>Movie Advicer</title>
       </Head>
       <main>
-        <Movies />
+        <Movies movies={movies} />
       </main>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const response = await axios.get('http://localhost:3000/api/movies');
+  const movies = response.data;
+
+  return {
+    props: {
+      movies,
+    },
+  };
 }
