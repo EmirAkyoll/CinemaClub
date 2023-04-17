@@ -1,7 +1,7 @@
 export const movie_advice_schema = {
     _id: {
         type: String,
-        required: true, 
+        // required: true, 
     },
 
     title: {
@@ -10,8 +10,8 @@ export const movie_advice_schema = {
     },
 
     genre: {
-        type: [String],
-        required: true,
+        type: String,
+        // required: true,
     },
     
     duration: {

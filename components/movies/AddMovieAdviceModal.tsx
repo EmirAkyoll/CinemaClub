@@ -1,23 +1,67 @@
-import React from "react";
+import React, { useContext, Dispatch, SetStateAction, useState } from "react";
+import { Context } from "../../context/state";
+import { GrClose } from "react-icons/gr";
+import { v4 as uuidv4 } from 'uuid';
+import { IMovie } from "@/interfaces/imovies";
+import axios from "axios";
 //* Styles coming from '_add-movie-advice-modal.scss'
 
 const AddMovieAdviceModal: React.FC = () => {
+  const { setIsNewMovieModalOpen }: Dispatch<SetStateAction<boolean>> | any = useContext(Context);
+  const [movieData, setMovieData] = useState<IMovie>({
+    _id: uuidv4(),
+    title: "",
+    genre: "",
+    duration: "",
+    release_year: 0,
+    imdb_rating: "",
+    director: "",
+    banner_url_first: "",
+    banner_url_second: "",
+    summary: "",
+    story_shortly: "",
+    likes: 0,
+    dislikes: 0,
+  });
+
+  async function sendMovieData() {
+    console.log("start");
+    console.log(movieData.imdb_rating);
+    console.log(movieData.director);
+    console.log(movieData.duration);
+    console.log(movieData.release_year);
+    
+    await axios.post('http://localhost:3000/api/movies', movieData)
+               .then(data => console.log(data))
+               .catch(err => console.log(err))
+    console.log("end");
+  }
+
   return (
     <div className="modal">
+      <div className="modal-backdrop"></div>
       <div className="modal-header">Add New Movie Advice</div>
+      <button 
+        className="modal-close-button"
+        onClick={() => setIsNewMovieModalOpen(false)}
+      >
+        <GrClose className="modal-close-button-icon"/>
+      </button>
 
       <div className="modal-sections-wrapper">
         <div className="modal-sections-wrapper-section">
           <div className="modal-sections-wrapper-section-item">
-            <label htmlFor="movie-name" className="modal-sections-wrapper-section-item-label">
+            <label htmlFor="movie-title" className="modal-sections-wrapper-section-item-label">
               Name:
             </label>
             <input
               type="text"
-              id="movie-name"
-              name="movie-name"
+              id="movie-title"
+              name="movie-title"
+              value={movieData.title}
               className="modal-sections-wrapper-section-item-textbox"
-              placeholder="Enter movie name.."
+              placeholder="Enter movie title.."
+              onChange={(e) => setMovieData({ ...movieData, title: e.target.value })}
             />
           </div>
 
@@ -29,49 +73,57 @@ const AddMovieAdviceModal: React.FC = () => {
               type="text"
               id="movie-genre"
               name="movie-genre"
+              value={movieData.genre}
               className="modal-sections-wrapper-section-item-textbox"
               placeholder="Enter movie genre .."
+              onChange={(e) => setMovieData({ ...movieData, genre: e.target.value })}
             />
           </div>
 
           <div className="modal-sections-wrapper-section-item">
-            <label htmlFor="movie-time" className="modal-sections-wrapper-section-item-label">
-              Time:
+            <label htmlFor="movie-duration" className="modal-sections-wrapper-section-item-label">
+              Duration:
             </label>
             <input
               type="text"
-              id="movie-time"
-              name="movie-time"
+              id="movie-duration"
+              name="movie-duration"
+              value={movieData.duration}
               className="modal-sections-wrapper-section-item-textbox"
-              placeholder="Enter time.."
+              placeholder="As 'hours:minute:seconds'.."
+              onChange={(e) => setMovieData({ ...movieData, duration: e.target.value })}
             />
           </div>
         </div>
 
         <div className="modal-sections-wrapper-section">
           <div className="modal-sections-wrapper-section-item">
-            <label htmlFor="movie-publish-year" className="modal-sections-wrapper-section-item-label">
-              Publish Year:
+            <label htmlFor="movie-release-year" className="modal-sections-wrapper-section-item-label">
+              Release Year:
             </label>
             <input
               type="text"
-              id="movie-publish-year"
-              name="movie-publish-year"
+              id="movie-release-year"
+              name="movie-release-year"
+              value={movieData.release_year}
               className="modal-sections-wrapper-section-item-textbox"
-              placeholder="Enter publish-year.."
+              placeholder="Enter release year.."
+              onChange={(e) => setMovieData({ ...movieData, release_year: e.target.value })}
             />
           </div>
 
           <div className="modal-sections-wrapper-section-item">
-            <label htmlFor="movie-imdb-score" className="modal-sections-wrapper-section-item-label">
-              IMDB Score:
+            <label htmlFor="movie-imdb-rating" className="modal-sections-wrapper-section-item-label">
+              IMDB Rating:
             </label>
             <input
               type="text"
-              id="movie-imdb-score"
-              name="movie-imdb-score"
+              id="movie-imdb-rating"
+              name="movie-imdb-rating"
+              value={movieData.imdb_rating}
               className="modal-sections-wrapper-section-item-textbox"
-              placeholder="Enter imbd score.."
+              placeholder="As ?/10.."
+              onChange={(e) => setMovieData({ ...movieData, imdb_rating: e.target.value })}
             />
           </div>
 
@@ -83,8 +135,10 @@ const AddMovieAdviceModal: React.FC = () => {
               type="text"
               id="movie-director"
               name="movie-director"
+              value={movieData.director}
               className="modal-sections-wrapper-section-item-textbox"
               placeholder="Enter director.."
+              onChange={(e) => setMovieData({ ...movieData, director: e.target.value })}
             />
           </div>
         </div>
@@ -99,8 +153,10 @@ const AddMovieAdviceModal: React.FC = () => {
             type="text"
             id="movie-banner-first"
             name="movie-banner-first"
+            value={movieData.banner_url_first}
             className="modal-banner-urls-item-textbox | modal-sections-wrapper-section-item-textbox"
             placeholder="Enter first banner url .."
+            onChange={(e) => setMovieData({ ...movieData, banner_url_first: e.target.value })}
           />
         </div>
 
@@ -112,8 +168,10 @@ const AddMovieAdviceModal: React.FC = () => {
             type="text"
             id="movie-banner-second"
             name="movie-banner-second"
+            value={movieData.banner_url_second}
             className="modal-banner-urls-item-textbox | modal-sections-wrapper-section-item-textbox"
             placeholder="Enter second banner url .."
+            onChange={(e) => setMovieData({ ...movieData, banner_url_second: e.target.value })}
           />
         </div>
       </div>
@@ -124,12 +182,14 @@ const AddMovieAdviceModal: React.FC = () => {
             Summary:
           </label>
           <textarea 
-            name="movie-summary" 
             id="movie-summary" 
+            name="movie-summary"
+            value={movieData.summary} 
             cols={30} 
             rows={10}
             className="modal-text-areas-item-text-area"
             placeholder="Enter summary.."
+            onChange={(e) => setMovieData({ ...movieData, summary: e.target.value })}
           ></textarea>
         </span>
 
@@ -138,17 +198,23 @@ const AddMovieAdviceModal: React.FC = () => {
             Story Shortly:
           </label>
           <textarea 
-            name="movie-story-shortly" 
             id="movie-story-shortly" 
+            name="movie-story-shortly"
+            value={movieData.story_shortly} 
             cols={30} 
             rows={10}
             className="modal-text-areas-item-text-area"
             placeholder="Enter story.."
+            onChange={(e) => setMovieData({ ...movieData, story_shortly: e.target.value })}
           ></textarea>
         </span>
       </div>
 
-      <button className="modal-button">Send</button>
+      <button 
+        className="modal-button"
+        onClick={sendMovieData}
+      >
+        Send</button>
     </div>
   );
 };

@@ -28,6 +28,7 @@
     "yup": "^1.0.2"
   },
   "devDependencies": {
+    "@types/uuid": "^9.0.1",
     "sass": "^1.60.0"
   }
 }

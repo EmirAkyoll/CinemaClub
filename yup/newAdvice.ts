@@ -4,17 +4,18 @@ export const newAdviceSchema = Yup.object({
   name: Yup.string()
     .required("Password is required."),
 
-  genre: Yup.string()
+  genre: Yup.array().of(Yup.string())
     .required("Genre is required."),
 
-  time: Yup.string()
-    .required("Movie time is required."),
+  duration: Yup.string()
+    .required("Movie time is required.")
+    .matches(/^\d+:\d+:\d+$/, "Must be like 'h:m:s'"),
 
-  publish_year: Yup.number()
-    .required("Publish year is required."),
+  release_year: Yup.number()
+    .required("Release year is required."),
 
-  imdb_score: Yup.number()
-    .required("IMBD score is required."),
+  imdb_rating: Yup.number()
+    .required("IMBD rating is required."),
     
   likes: Yup.number()
     .required("Like score is required."),
@@ -23,7 +24,7 @@ export const newAdviceSchema = Yup.object({
     .required("Dislike score is required."),
 
   director: Yup.string()
-    .required("IMBD score is required."),
+    .required("Director name is required."),
 
   banner_url_first: Yup.string()
     .required("First Banner URL is required."),

@@ -8,7 +8,7 @@ export interface IMovie {
   imdb_rating?: string;
   likes?: number;
   dislikes?: number;
-  genre?: string[];
+  genre?: string[] | string;
   director?: string;
   summary?: string;
   story_shortly?: string;
