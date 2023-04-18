@@ -1,7 +1,7 @@
 import React, { useContext, Dispatch, SetStateAction, useState } from "react";
 import { Context } from "../../context/state";
 import { GrClose } from "react-icons/gr";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as generate_random_id } from 'uuid';
 import { IMovie } from "@/interfaces/imovies";
 import axios from "axios";
 //* Styles coming from '_add-movie-advice-modal.scss'
@@ -9,7 +9,7 @@ import axios from "axios";
 const AddMovieAdviceModal: React.FC = () => {
   const { setIsNewMovieModalOpen }: Dispatch<SetStateAction<boolean>> | any = useContext(Context);
   const [movieData, setMovieData] = useState<IMovie>({
-    _id: uuidv4(),
+    _id: generate_random_id(),
     title: "",
     genre: "",
     duration: "",
@@ -24,17 +24,11 @@ const AddMovieAdviceModal: React.FC = () => {
     dislikes: 0,
   });
 
-  async function sendMovieData() {
-    console.log("start");
-    console.log(movieData.imdb_rating);
-    console.log(movieData.director);
-    console.log(movieData.duration);
-    console.log(movieData.release_year);
-    
+  async function sendMovieData() { 
     await axios.post('http://localhost:3000/api/movies', movieData)
                .then(data => console.log(data))
                .catch(err => console.log(err))
-    console.log("end");
+               .finally(setIsNewMovieModalOpen(false))
   }
 
   return (

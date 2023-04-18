@@ -1,21 +1,24 @@
 export const user_schema = {
-    id: {
-        type: String,
-        required: true, 
-    },
-    
-    userName: {
+    _id: {
         type: String,
         required: true,
+        // unique: true,
+    },
+
+    user_name: {
+        type: String,
+        required: true,
+        unique: true
     },
 
     password: {
         type: String,
         required: true,
     },
-    
-    eMail: {
+
+    e_mail: {
         type: String,
         required: true,
+        // unique: true
     },
 }

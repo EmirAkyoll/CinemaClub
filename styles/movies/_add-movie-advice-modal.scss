@@ -2,12 +2,11 @@
     width: 35vw;
     max-height: 50vh;
     overflow-y: auto;
-    pointer-events: auto;
     font-family: 'Roboto', sans-serif;
-    color: #fff;
+    color: $white;
     font-size: 18px;
     border-radius: 10px;
-    border: 2px solid #aaa;
+    border: 2.5px solid $white;
     padding: 40px;
     padding-top: 200px;
     position: fixed;
@@ -44,7 +43,7 @@
 
         &-icon{
             font-size: 20px;
-            color: red;
+            color: #f00;
         }
     }
 
@@ -69,6 +68,7 @@
                     height: 20px;
                     border-radius: 5px;
                     padding: 5px;
+                    margin-top: 3px;
                     @include flex-center(row);
                 }
             }
@@ -102,7 +102,6 @@
         }
 
         &-item{
-            // gap: 10px;
             @include flex-center(column){
                 align-items: flex-start;
             }
@@ -113,6 +112,8 @@
                 width: 175px;
                 height: 120px;
                 padding: 5px;
+                margin-top: 3px;
+                border-radius: 5px;
             }
         }
     }

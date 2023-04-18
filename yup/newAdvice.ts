@@ -1,8 +1,8 @@
 import * as Yup from "yup";
 
 export const newAdviceSchema = Yup.object({
-  name: Yup.string()
-    .required("Password is required."),
+  title: Yup.string()
+    .required("title is required."),
 
   genre: Yup.array().of(Yup.string())
     .required("Genre is required."),
@@ -12,11 +12,13 @@ export const newAdviceSchema = Yup.object({
     .matches(/^\d+:\d+:\d+$/, "Must be like 'h:m:s'"),
 
   release_year: Yup.number()
-    .required("Release year is required."),
+    .required("Release year is required.")
+    .max(4),
 
-  imdb_rating: Yup.number()
-    .required("IMBD rating is required."),
-    
+  imdb_rating: Yup.string()
+    .required("IMDb rating is required.")
+    .matches(/^([1-9](\.\d)?|10(\.0)?)\/10$/, "Must be like 'ratio/10'"),
+
   likes: Yup.number()
     .required("Like score is required."),
 

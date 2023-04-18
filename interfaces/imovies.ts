@@ -1,17 +1,17 @@
 export interface IMovie {
-  _id?: string;
+  _id: string;
   title: string;
   banner_url_first?: string;
   banner_url_second?: string;
-  duration?: string;
-  release_year: number;
-  imdb_rating?: string;
-  likes?: number;
-  dislikes?: number;
-  genre?: string[] | string;
-  director?: string;
-  summary?: string;
-  story_shortly?: string;
+  duration: string;
+  release_year: number | string;
+  imdb_rating: string;
+  likes: number;
+  dislikes: number;
+  genre: string[] | string;
+  director: string;
+  summary: string;
+  story_shortly: string;
 }
 
 export interface IMovieCardsProps {
