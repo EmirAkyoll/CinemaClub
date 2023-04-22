@@ -37,7 +37,7 @@ const Movie: React.FC<IMovie | any> = ({ movie }) => {
 };
 
 export const getServerSideProps = async ({ params }: any) => {
-  const res = await axios.get(`http://localhost:3000/api/movies/${params.id}`);
+  const res = await axios.get(`/api/movies/${params.id}`);
   const chosen_movie = res.data;
 
     return {

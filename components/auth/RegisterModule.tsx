@@ -17,10 +17,10 @@ const RegisterModule: React.FC = () => {
   });
 
   async function sendMovieData() { 
-    await axios.post('http://localhost:3000/api/users', userData)
+    await axios.post('/api/users', userData)
                .then(data => console.log(data))
                .catch(err => console.log(err))
-               .finally(router.push('/auth/login'))
+               .finally(() => router.push('/auth/login'))
   }
 
   return (
