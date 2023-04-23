@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { IUser } from "@/interfaces/iusers";
+import { Context } from "../../context/state";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import axios from "axios";
-import { useRouter } from "next/router";
 //* Styles coming from '_auth-module.scss'
 
 const LoginModule: React.FC = () => {
+  const { currentUser, setCurrentUser }: any = useContext(Context);
+
   const router = useRouter();
   const [username, setUserName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -13,13 +16,18 @@ const LoginModule: React.FC = () => {
   const handleLogIn = async (e: any) => {
     const credentials = { username, password };
     await axios.post("/api/auth/login", credentials)
+               .then((res_as_user) => {
+                  localStorage.setItem('EncodedUserDataJWT', JSON.stringify(res_as_user.data))
+                  setCurrentUser(res_as_user.data)
+                })
                .then(() => router.push('/'))
-    // console.log("cre: ", credentials);
+               .catch(err => console.log(err))
+    // console.log("cre: ", credentials, "current: ",currentUser);
   };
 
-  const handleLogOut = async () => {
-    const user = await axios.get("/api/auth/logout");
-    console.log(user);
+  const handleLogOut = () => {
+    setCurrentUser(null)
+    localStorage.removeItem('EncodedUserDataJWT')
   };
 
   return (
@@ -55,16 +63,11 @@ const LoginModule: React.FC = () => {
         <Link href="/auth/login" className='auth-module-text-route'>sign up</Link>.
       </p>
 
-      <button 
-        className='auth-module-button'
-        onClick={handleLogIn}
-      >
+      <button className='auth-module-button' onClick={handleLogIn}>
         Log In
       </button>
-      <button 
-        className='auth-module-button'
-        onClick={handleLogOut}
-      >
+      
+      <button className='auth-module-button' onClick={handleLogOut}>
         Log Out
       </button>
     </div>

@@ -2,6 +2,17 @@ import React from "react";
 import axios from "axios";
 import { IMovie } from "@/interfaces/imovies";
 
+export const getServerSideProps = async ({ params }: any) => {
+  const res = await axios.get(`http://localhost:3000/api/movies/${params.id}`);
+  const chosen_movie = res.data;
+
+    return {
+      props: {
+        movie: chosen_movie ? chosen_movie : null,
+      },
+    };
+};
+
 const Movie: React.FC<IMovie | any> = ({ movie }) => {
   console.log(movie);
 
@@ -34,17 +45,6 @@ const Movie: React.FC<IMovie | any> = ({ movie }) => {
       <div className="movie-page-comments"></div>
     </div>
   );
-};
-
-export const getServerSideProps = async ({ params }: any) => {
-  const res = await axios.get(`/api/movies/${params.id}`);
-  const chosen_movie = res.data;
-
-    return {
-      props: {
-        movie: chosen_movie ? chosen_movie : null,
-      },
-    };
 };
 
 export default Movie;

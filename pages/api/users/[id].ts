@@ -1,7 +1,7 @@
 import User from "../../../db/models/User";
 import dbConnect from "../../../db/utils/dbConnect";
 import type { NextApiRequest, NextApiResponse } from 'next'
- 
+
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   await dbConnect();
   const {method, query: { id }} = req;

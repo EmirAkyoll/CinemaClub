@@ -3,8 +3,6 @@ import Head from "next/head";
 import Movies from "./movies/index";
 import axios from "axios";
 import { IMovieCardsProps } from "@/interfaces/imovies";
-// import dbConnect from "../db/utils/dbConnect";
-// import { useState } from "react";
 
 export default function Home({movies}: IMovieCardsProps) {
   return (

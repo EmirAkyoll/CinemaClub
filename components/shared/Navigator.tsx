@@ -1,30 +1,48 @@
-import React, { useContext, Dispatch, SetStateAction } from "react";
+import React, { useContext, Dispatch, SetStateAction, useEffect } from "react";
 import { Context } from "../../context/state";
-import Link from "next/link";
 import { BiPlus, BiMoviePlay } from "react-icons/bi";
+import Link from "next/link";
+import axios from "axios";
+import jwt from "jsonwebtoken";
 //* Styles coming from '_navigator.scss'
+
+useEffect(() => {
+  const user_data = JSON.parse(localStorage.getItem('EncodedUserDataJWT')),
+}, [])
 
 const Navigator: React.FC = () => {
   const { setIsNewMovieModalOpen }: Dispatch<SetStateAction<boolean>> | any = useContext(Context);
+  const { currentUser, setCurrentUser }: any = useContext(Context);
+
+  const handleLogOut = () => {
+    localStorage.removeItem('EncodedUserDataJWT')
+    setCurrentUser(null)
+  };
 
   return (
     <nav className="navigation">
-      <a href="#" className="navigation-item">
-        Advices
-      </a>
-      <a href="#" className="navigation-item">
-        Booked
-      </a>
-      <Link href="/movie/:id">
-       <p className="navigation-item">Nakkara</p> 
+      <Link href="#">
+        <a className="navigation-item">Advices</a>
       </Link>
 
+      {currentUser ? 
+        (<Link href="#">
+          <a className="navigation-item">Booked</a>
+         </Link>) : 
+        (<Link href="/auth/login">
+          <a className="navigation-item">Log In</a> 
+         </Link>)
+      }
+
       <button 
-        className="navigation-button"
-        onClick={() => setIsNewMovieModalOpen(true)}  
+        className={`navigation-button ${currentUser ? 'there-is-A-user' : 'there-is-NO-user'}`} 
+        onClick={() => setIsNewMovieModalOpen(true)}
       >
         <BiPlus />
         <BiMoviePlay />
+      </button>
+      <button className='auth-module-button' onClick={handleLogOut}>
+        Log Out
       </button>
     </nav>
   );

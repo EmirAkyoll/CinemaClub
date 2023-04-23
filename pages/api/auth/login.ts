@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { sign } from "jsonwebtoken";
-import { serialize } from "cookie";
+import JWT from "jsonwebtoken";
 import User from "../../../db/models/User";
 import dbConnect from "../../../db/utils/dbConnect";
 
@@ -11,34 +10,14 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   const {method, query: {id}, body: {username, password}} = req;
 
   if (username && password) {
-    
-    const token = sign(
-      {
-        exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24, // 1 day
-        username: username,
-      },
-      secret
-      );
-      
-    const serialised = serialize("SiteJWT", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV !== "development",
-      sameSite: "strict",
-      maxAge: 60 * 60 * 24 * 30,
-      path: "/",
-    });
 
-    // if (method === "GET") {
-    //   try {
-    //     const user = await User.findOne({user_name: `${username}`});
-    //     // console.log(user);
-        
-    //     // res.setHeader("Set-Cookie", serialised);
-    //     // res.status(200).json(user);
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // }
+    const token = JWT.sign(
+      {
+        exp: 60 * 60 * 24, // 1 day
+        username: username,
+      }, //? diğer user verileri de getirilecek
+      secret
+    );
 
     if (method === "POST") {
       try {
@@ -46,7 +25,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         console.log("user aga: ", user);
         
         if(user){
-          res.setHeader("Set-Cookie", serialised);
+          
           res.status(200).json(user);
         }
       } catch (err) {
@@ -54,7 +33,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       }
     }
   
-    // res.setHeader("Set-Cookie", serialised);
     // res.status(200).json({messages: "Success!"});
   } else {
     res.json({ message: "Invalid credentials!" });

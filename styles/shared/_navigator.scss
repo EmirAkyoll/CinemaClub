@@ -28,4 +28,20 @@
             transition: background-color 0.3s ease;
         }
     }
+
+}
+
+.there-is-A-user{
+    pointer-events: auto;
+    color: #333;
+}
+
+.there-is-NO-user{
+    pointer-events: none;
+    color: #888;
+    background-color: #aaa;
+    
+    &:not(:hover){
+        background-color: #ccc;
+    }
 }

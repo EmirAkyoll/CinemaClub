@@ -1,19 +1,19 @@
 import * as Yup from "yup";
 
-export const newAdviceSchema = Yup.object({
+export const newMovieAdviceSchema = Yup.object({
   title: Yup.string()
-    .required("title is required."),
+    .required("Title is required."),
 
-  genre: Yup.array().of(Yup.string())
+  genre: (Yup.string())
     .required("Genre is required."),
 
   duration: Yup.string()
     .required("Movie time is required.")
-    .matches(/^\d+:\d+:\d+$/, "Must be like 'h:m:s'"),
+    .matches(/^\d+:\d+:\d+$/, "Must be like 'hour:min:sec'"),
 
   release_year: Yup.number()
     .required("Release year is required.")
-    .max(4),
+    .min(4),
 
   imdb_rating: Yup.string()
     .required("IMDb rating is required.")
