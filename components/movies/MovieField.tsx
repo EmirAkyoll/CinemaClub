@@ -1,12 +1,14 @@
 import React from "react";
 import MovieCard from "./MovieCard";
 import { IMovieCardsProps } from "@/interfaces/imovies";
+import MovieComment from "./MovieComment";
 //* Styles coming from '_movie-field.scss'
 
 const MovieField: React.FC<IMovieCardsProps> = ({ movies }) => {
   return (
     <div className="movie-field">
       <div className="movie-field-cards">
+        <MovieComment />
         {movies?.map((movie) => (
           <MovieCard key={movie?.title} movie={movie} />
         ))}

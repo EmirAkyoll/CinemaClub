@@ -12,8 +12,8 @@ const Navigator: React.FC = () => {
 
   useEffect(() => {
     const decoded_user = JWT.decode(localStorage.getItem('EncodedUserDataJWT'))
-    console.log("decoded user: ", decoded_user);
     setCurrentUser(decoded_user)
+    // console.log("decoded user: ", decoded_user);
   },[])
 
   const handleLogOut = () => {
@@ -43,7 +43,7 @@ const Navigator: React.FC = () => {
         <BiPlus />
         <BiMoviePlay />
       </button>
-      <button className='auth-module-button' onClick={handleLogOut}>
+      <button className='navigation-button' onClick={handleLogOut}>
         Log Out
       </button>
     </nav>

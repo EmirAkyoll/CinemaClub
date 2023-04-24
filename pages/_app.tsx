@@ -19,6 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
     }}>
       <Layout>
         <Component {...pageProps} />
+        <div id="global-portal-field"></div>
       </Layout>
     </Context.Provider>
   );
