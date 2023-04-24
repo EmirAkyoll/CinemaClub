@@ -3,16 +3,18 @@ import { Context } from "../../context/state";
 import { BiPlus, BiMoviePlay } from "react-icons/bi";
 import Link from "next/link";
 import axios from "axios";
-import jwt from "jsonwebtoken";
+import JWT from "jsonwebtoken";
 //* Styles coming from '_navigator.scss'
-
-useEffect(() => {
-  const user_data = JSON.parse(localStorage.getItem('EncodedUserDataJWT')),
-}, [])
 
 const Navigator: React.FC = () => {
   const { setIsNewMovieModalOpen }: Dispatch<SetStateAction<boolean>> | any = useContext(Context);
   const { currentUser, setCurrentUser }: any = useContext(Context);
+
+  useEffect(() => {
+    const decoded_user = JWT.decode(localStorage.getItem('EncodedUserDataJWT'))
+    console.log("decoded user: ", decoded_user);
+    setCurrentUser(decoded_user)
+  },[])
 
   const handleLogOut = () => {
     localStorage.removeItem('EncodedUserDataJWT')
@@ -33,7 +35,7 @@ const Navigator: React.FC = () => {
           <a className="navigation-item">Log In</a> 
          </Link>)
       }
-
+  
       <button 
         className={`navigation-button ${currentUser ? 'there-is-A-user' : 'there-is-NO-user'}`} 
         onClick={() => setIsNewMovieModalOpen(true)}

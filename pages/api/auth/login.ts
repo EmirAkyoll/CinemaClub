@@ -22,11 +22,19 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     if (method === "POST") {
       try {
         const user = await User.findOne({ $and: [{ user_name: username }, { password: password }] });
-        console.log("user aga: ", user);
+        console.log("user aga BUM: ", user);
+
+        const token = JWT.sign( {
+          exp: 60 * 60 * 24, // 1 day
+          id: user._id,
+          username: user.user_name,
+          email: user.e_mail,
+        }, secret);
+
+        // console.log(token);
         
         if(user){
-          
-          res.status(200).json(user);
+          res.status(200).json(token);
         }
       } catch (err) {
         console.log(err);

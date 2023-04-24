@@ -4,6 +4,7 @@ import { Context } from "../../context/state";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import axios from "axios";
+import JWT from "jsonwebtoken";
 //* Styles coming from '_auth-module.scss'
 
 const LoginModule: React.FC = () => {
@@ -13,21 +14,20 @@ const LoginModule: React.FC = () => {
   const [username, setUserName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const handleLogIn = async (e: any) => {
+  const handleLogIn = async () => {
     const credentials = { username, password };
     await axios.post("/api/auth/login", credentials)
-               .then((res_as_user) => {
-                  localStorage.setItem('EncodedUserDataJWT', JSON.stringify(res_as_user.data))
-                  setCurrentUser(res_as_user.data)
-                })
+               .then((res_as_user_token) => {
+                  localStorage.setItem('EncodedUserDataJWT', res_as_user_token.data)
+                  setCurrentUser(res_as_user_token.data)
+                })  
                .then(() => router.push('/'))
                .catch(err => console.log(err))
-    // console.log("cre: ", credentials, "current: ",currentUser);
   };
 
-  const handleLogOut = () => {
-    setCurrentUser(null)
+  const handleLogOut = async () => {
     localStorage.removeItem('EncodedUserDataJWT')
+    setCurrentUser(null)
   };
 
   return (
