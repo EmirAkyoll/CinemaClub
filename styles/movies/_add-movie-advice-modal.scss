@@ -8,9 +8,9 @@
     border-radius: 10px;
     border: 2.5px solid $white;
     padding: 40px;
-    padding-top: 200px;
+    padding-top: 150px;
     position: fixed;
-    top: 50px;
+    top: 60px;
     margin-left: 30vw;
     background-color: #000;
     z-index: 1050;
@@ -26,11 +26,11 @@
     //     opacity: 0.7;
     // }
 
-    &-header{
+    &-header {
         font-size: 27px;
     }
 
-    &-close-button{
+    &-close-button {
         background-color: $white;
         border: none;
         cursor: pointer;
@@ -41,7 +41,7 @@
         right: 0;
         @include flex-center(row);
 
-        &-icon{
+        &-icon {
             font-size: 20px;
             color: #f00;
         }
@@ -49,6 +49,7 @@
 
     &-sections-wrapper {
         padding-top: 15px;
+
         @include flex-center(row) {
             justify-content: space-between;
         }
@@ -66,9 +67,14 @@
                 &-textbox {
                     width: 175px;
                     height: 20px;
-                    border-radius: 5px;
+                    // border-radius: 5px;
                     padding: 5px;
                     margin-top: 3px;
+                    background-color: transparent;
+                    outline: none;
+                    color: #fff;
+                    border: none;
+                    border-bottom: 1px $white solid;
                     @include flex-center(row);
                 }
             }
@@ -76,44 +82,49 @@
 
     }
 
-    &-banner-urls{
+    &-banner-urls {
         width: 425px;
 
-        &-item{
+        &-item {
             margin-bottom: 25px;
 
             &-label {
                 margin-left: -7px;
             }
-    
+
             &-textbox {
                 width: 100%;
-                margin-left: -7px;     
+                margin-left: -7px;
             }
         }
     }
 
-    &-text-areas{
+    &-text-areas {
         width: 425px;
         margin-top: 5px;
         margin-bottom: 20px;
-        @include flex-center(row){
+
+        @include flex-center(row) {
             justify-content: space-between;
         }
 
-        &-item{
-            @include flex-center(column){
+        &-item {
+            @include flex-center(column) {
                 align-items: flex-start;
             }
 
-            &-label{}
+            &-label {}
 
-            &-text-area{
+            &-text-area {
                 width: 175px;
                 height: 120px;
                 padding: 5px;
                 margin-top: 3px;
                 border-radius: 5px;
+                background-color: transparent;
+                outline: none;
+                border-bottom: 1px $white solid;
+                color: #fff;
             }
         }
     }

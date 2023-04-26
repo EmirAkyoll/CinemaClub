@@ -4,7 +4,6 @@
     @include flex-center(row);
 
     &-module {
-        // margin-top: calc(100vh - 42%);
         margin-top: 70px;
         position: relative;
         width: 380px;
@@ -48,17 +47,6 @@
                 font-size: 1em;
                 padding: 0 35px 0 5px;
                 color: #fff;
-
-                // &:invalid ~ label,
-                // &:focus ~ label {
-                //     top: -5px;
-                //     font-size: 14px;
-                // }
-
-                // &:not(:focus) ~ label{
-                //     top: 25px;
-                //     font-size: 16px;
-                // }
             }
 
             &-label {
@@ -70,15 +58,6 @@
                 font-size: 1em;
                 pointer-events: none;
                 transition: 0.4s;
-
-                // &:focus,
-                // &:valid {
-                //     top: -5px;
-                // }
-
-                // &:not(:focus) {
-                //     top: 25px;
-                // }
             }
         }
 

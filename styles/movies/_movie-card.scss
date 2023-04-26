@@ -13,6 +13,10 @@
     }
 
     &:hover{
+        .movie-card-bookmark{
+            opacity: 1;
+        }
+
         .movie-card-scores-item{
             width: 65px ;
             transition: width 0.3s ease;
@@ -48,6 +52,22 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
+    }
+
+    &-bookmark{
+        opacity: 0;
+        border: 1px #fff solid;
+        position: absolute;
+        top: -100px;
+        right: -10px;
+        padding: 11px;
+        font-size: 22px;
+        z-index: 5;
+        color: #fff;
+        border-radius: 50%;
+        background-color: #0a1420;
+        transition: opacity 0.4s ease;
+        @include flex-center();
     }
 
     &-upstairs{
@@ -90,6 +110,12 @@
         border-top: 1px solid #222;
     }
 
+    &-texts{
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        text-decoration: none;
+    }
 
     &-text{
         color: #fff;

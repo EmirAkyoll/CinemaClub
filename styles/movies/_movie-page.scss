@@ -1,10 +1,9 @@
 .movie-page {
-    padding-top: 40px;
+    height: 100%;
     background-color: #000;
-    height: 100vh;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
-    padding-top: 90px;
+    padding-top: 30px;
     padding-bottom: 150px;
     position: relative;
     @include flex-center(column);
@@ -14,21 +13,36 @@
         background-color: $black;
         font-size: 50px;
         padding: 15px;
-        margin-bottom: 30px;
+        padding-top: 0;
+        margin-bottom: 35px;
         border-radius: 0 0 30px 30px;
         position: sticky;
-        top: calc(0vh + 115px); //'115px' is "Header"s height, look at '_header.scss'
+        top: 115px; //'115px' is "Header Component"s height, look at '_header.scss'
+        z-index: 20;
     }
 
-    &-banners {
+    &-showcase {
+        position: relative;
         @include flex-center(row);
         gap: 100px;
 
-        &-item {
+        &-banner {
             width: 250px;
             height: 350px;
         }
+
+        &-genre{
+            border: 1px #aaa solid;
+            position: absolute;
+            bottom: -25px;
+            right: 0px;
+            color: $white;
+            background-color: #080712;
+            padding: 12px;
+            border-radius: 40% 0 0 0;
+        }
     }
+
 
     &-texts {
         color: $white;
@@ -43,5 +57,28 @@
         }
     }
 
-    &-comments {}
+    &-comments{
+        display: grid; 
+        grid-template-columns: 1fr 1fr 1fr; 
+        // grid-template-rows: 1fr 1fr 1fr; 
+        gap: 50px 50px; 
+        margin-top: 80px;
+        
+        &-item{
+            max-width: 250px;
+            padding: 1rem;
+            position: relative;
+            background: linear-gradient(to right, #ff0000, #ba0dba);
+            border-radius: 5px;
+            padding: 2px;
+    
+            &-content {
+                border-radius: 5px;
+                background: #222;
+                color: white;
+                padding: 2rem;
+                text-align: center;
+            }
+        }
+    }
 }

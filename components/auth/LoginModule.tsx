@@ -17,14 +17,17 @@ const LoginModule: React.FC = () => {
 
   const handleLogIn = async () => {
     const credentials = { username, password };
-    await axios
-      .post("/api/auth/login", credentials)
-      .then((res_as_user_token) => {
-        localStorage.setItem("EncodedUserDataJWT", res_as_user_token.data);
-        setCurrentUser(res_as_user_token.data);
-      })
-      .then(() => router.push("/"))
-      .catch((err) => console.log(err));
+    await axios.post("/api/auth/login", credentials)
+               .then((res_as_user_token) => {
+                //  console.log(JWT.decode(res_as_user_token.data));
+                 localStorage.setItem("EncodedUserDataJWT", res_as_user_token.data);
+                 
+                 setCurrentUser(res_as_user_token.data);
+                 console.log("current: ",currentUser);
+                 
+               })
+               .then(() => router.push("/"))
+               .catch((err) => console.log(err));               
   };
 
   const handleLogOut = async () => {

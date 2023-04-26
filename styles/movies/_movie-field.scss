@@ -1,7 +1,29 @@
 .movie-field {
+    position: relative;
     margin-top: 140px;
     margin-bottom: 150px;
     @include flex-center(row);
+
+    &-button{
+        position: absolute;
+        top: -120px;
+        right: 15px;
+        cursor: pointer;
+        font-size: 20px;
+        padding: 7px;
+        padding-left: 3px;
+        border-radius: 5px;
+        @include flex-center(row);
+
+        &:hover{
+            background-color: #fae6cf;
+            transition: background-color 0.3s ease;
+        }
+        &:not(:hover){
+            background-color: #ebc8b2;
+            transition: background-color 0.3s ease;
+        }
+    }
 
     &-cards {
         width: 92vw;
@@ -10,5 +32,20 @@
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         place-items: center;
         row-gap: 150px;
+    }
+}
+
+.there-is-A-user{
+    pointer-events: auto;
+    color: #333;
+}
+
+.there-is-NO-user{
+    pointer-events: none;
+    color: #888;
+    background-color: #aaa;
+    
+    &:not(:hover){
+        background-color: #ccc;
     }
 }

@@ -1,0 +1,18 @@
+.modal-movie{
+    @include flex-center(column);
+
+    &-data{
+        padding: 10px;
+
+        &-item{
+
+            &-title{
+
+            }
+
+            &-content{
+
+            }
+        }
+    }
+}

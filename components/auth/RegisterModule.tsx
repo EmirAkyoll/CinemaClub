@@ -17,7 +17,7 @@ const RegisterModule: React.FC = () => {
     e_mail: "",
   });
 
-  async function sendMovieData() {
+  async function sendUserData() {
     await axios
       .post("/api/users", userData)
       .then((data) => console.log(data))
@@ -51,6 +51,7 @@ const RegisterModule: React.FC = () => {
             id="password"
             name="password"
             value={userData.password}
+            autoComplete="off"
             placeholder="Password"
             className="auth-module-section-textbox"
             onChange={(e) => setUserData({ ...userData, password: e.target.value })}
@@ -81,7 +82,7 @@ const RegisterModule: React.FC = () => {
           .
         </p>
 
-        <button className="auth-module-button" onClick={sendMovieData}>
+        <button className="auth-module-button" onClick={sendUserData}>
           Sign Up
         </button>
       </div>

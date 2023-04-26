@@ -10,15 +10,16 @@ const Navigator: React.FC = () => {
   const { setIsNewMovieModalOpen }: Dispatch<SetStateAction<boolean>> | any = useContext(Context);
   const { currentUser, setCurrentUser }: any = useContext(Context);
 
-  useEffect(() => {
-    const decoded_user = JWT.decode(localStorage.getItem('EncodedUserDataJWT'))
-    setCurrentUser(decoded_user)
-    // console.log("decoded user: ", decoded_user);
-  },[])
+  //! Admin girişine göre nav da değişiklik yapılamıyor
+
+  useEffect(() => {    
+    const decoded_user = JWT.decode(localStorage.getItem("EncodedUserDataJWT"));
+    setCurrentUser(decoded_user);
+  }, []);
 
   const handleLogOut = () => {
-    localStorage.removeItem('EncodedUserDataJWT')
-    setCurrentUser(null)
+    localStorage.removeItem("EncodedUserDataJWT");
+    setCurrentUser(null);
   };
 
   return (
@@ -27,23 +28,42 @@ const Navigator: React.FC = () => {
         <a className="navigation-item">Advices</a>
       </Link>
 
-      {currentUser ? 
-        (<Link href="#">
+      {currentUser && !currentUser?.isAdmin ? (
+        <Link href="/booked">
           <a className="navigation-item">Booked</a>
-         </Link>) : 
-        (<Link href="/auth/login">
-          <a className="navigation-item">Log In</a> 
-         </Link>)
-      }
-  
-      <button 
-        className={`navigation-button ${currentUser ? 'there-is-A-user' : 'there-is-NO-user'}`} 
+        </Link>) : 
+       currentUser && currentUser?.isAdmin ? (
+        <a className="navigation-item">Offers</a>
+      ) : 
+      (<Link href="/auth/login">
+          <a className="navigation-item">Log In</a>
+        </Link>
+      )}
+
+      {/* {currentUser ? (
+        <Link href="#">
+          <a className="navigation-item">Booked</a>
+        </Link>
+      ) : (
+        <Link href="/auth/login">
+          <a className="navigation-item">Log In</a>
+        </Link>
+      )}
+
+      {currentUser?.isAdmin && (
+        <Link href="/auth/login">
+          <a className="navigation-item">Offers</a>
+        </Link>
+      )} */}
+
+      {/* <button
+        className={`navigation-button ${currentUser ? "there-is-A-user" : "there-is-NO-user"}`}
         onClick={() => setIsNewMovieModalOpen(true)}
       >
         <BiPlus />
         <BiMoviePlay />
-      </button>
-      <button className='navigation-button' onClick={handleLogOut}>
+      </button> */}
+      <button className="navigation-button" onClick={handleLogOut}>
         Log Out
       </button>
     </nav>

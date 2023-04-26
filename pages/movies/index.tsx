@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../../context/state";
 import MovieField from "../../components/movies/MovieField";
 import { IMovieCardsProps } from "@/interfaces/imovies";
-import AddMovieAdviceModal from "../../components/movies/AddMovieAdviceModal";
+import AddMovieOfferModal from "../../components/movies/AddMovieOfferModal";
 // import axios from "axios";
 
 const Movies: React.FC<IMovieCardsProps> = ({movies}) => {
@@ -10,7 +10,7 @@ const Movies: React.FC<IMovieCardsProps> = ({movies}) => {
 
   return (
     <>
-      {isNewMovieModalOpen && <AddMovieAdviceModal />}
+      {isNewMovieModalOpen && <AddMovieOfferModal />}
       <MovieField movies={movies} />
     </>
   );

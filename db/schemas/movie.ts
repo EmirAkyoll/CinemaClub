@@ -1,4 +1,4 @@
-export const movie_advice_schema = {
+export const movie_schema = {
     _id: {
         type: String,
         required: true, 

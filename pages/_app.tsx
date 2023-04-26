@@ -10,12 +10,14 @@ export default function App({ Component, pageProps }: AppProps) {
   const [isNewMovieModalOpen, setIsNewMovieModalOpen] = useState<boolean>(false);
   const [chosenMovie, setChosenMovie] = useState<IMovie>();
   const [currentUser, setCurrentUser] = useState<IUser>();
+  const [isAdmin, setIsAdmin] = useState<boolean>()
 
   return (
     <Context.Provider value={{
        isNewMovieModalOpen, setIsNewMovieModalOpen,
        chosenMovie, setChosenMovie,
-       currentUser, setCurrentUser
+       currentUser, setCurrentUser,
+       isAdmin, setIsAdmin
     }}>
       <Layout>
         <Component {...pageProps} />

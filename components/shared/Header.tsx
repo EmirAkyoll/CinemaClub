@@ -3,11 +3,14 @@ import { Context } from "../../context/state";
 import Navigator from "./Navigator";
 import Image from "next/image";
 import Link from "next/link";
-import { BsFilm } from "react-icons/bs";
+import { BsFilm, BsSearch } from "react-icons/bs";
 //* Styles coming from '_header-comp.scss'
 
 const Header: React.FC = () => {
-  const { setIsNewMovieModalOpen }: Dispatch<SetStateAction<boolean>> | any = useContext(Context);
+  const {
+    setIsNewMovieModalOpen,
+    currentUser,
+  }: Dispatch<SetStateAction<boolean>> | any = useContext(Context);
 
   return (
     <header className="header">
@@ -29,6 +32,17 @@ const Header: React.FC = () => {
           <p className="header-logo-text">Movie Advicer</p>
         </span>
       </Link>
+
+      <span className="header-search">
+        <input
+          type="text"
+          name="searchbox"
+          id="searchbox"
+          placeholder="Search"
+          className="header-search-searchbox"
+        />
+        <BsSearch className="header-search-icon"/>
+      </span>
 
       <Navigator />
     </header>
