@@ -2,7 +2,6 @@ export const movie_schema = {
     _id: {
         type: String,
         required: true, 
-        unique: true,
     },
 
     title: {

@@ -29,10 +29,10 @@ const MovieField: React.FC<IMovieCardsProps> = ({ movies }) => {
           <BiMoviePlay />
         </button>
         {movies?.map((movie) => (
-          <MovieCard key={movie?.title} movie={movie} />
+          <MovieCard key={movie?._id} movie={movie} />
         ))}
         
-        <OffersModal />
+        {/* <OffersModal /> */}
       </div>
     </div>
   );

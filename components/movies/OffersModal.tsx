@@ -1,32 +1,39 @@
-import React, { useContext, Dispatch, SetStateAction, useState } from "react";
+import React, { useContext, Dispatch, SetStateAction, useState, useEffect } from "react";
 import { Context } from "../../context/state";
 import { GrClose, GrCheckmark } from "react-icons/gr";
-import axios from "axios";
 import { IMovie } from "@/interfaces/imovies";
+import axios from "axios";
 
-export async function getServerSideProps() {
-  const response = await axios.get("http://localhost:3000/api/offers");
-  const offers = response.data;
-console.log("offers aga: ", offers);
-
-  return {
-    props: {
-      offers,
-    },
-  };
-}
-
-const OffersModal: React.FC<IMovie | any> = ({ offers }) => {
+const OffersModal: React.FC<IMovie | any> = () => {
   const { setIsNewMovieModalOpen, currentUser }: Dispatch<SetStateAction<boolean>> | any = useContext(Context);
-console.log("offers agas:",offers);
+  const [offers, setOffers] = useState<IMovie | any>();
 
-  function acceptMovieOffer() {}
+  useEffect(() => {
+    async function getAllOffers(){
+      const res_offers = await axios.get('http://localhost:3000/api/offers')
+      setOffers(res_offers.data)
+        console.log("offerdir bu yaw: ",res_offers.data);
+    }
 
-  function rejectMovieOffer() {}
+    getAllOffers();
+  }, []);
+
+  async function acceptMovieOffer(movie: IMovie) {
+    await axios.post('http://localhost:3000/api/movies', movie)
+               .then(data => console.log(data))
+               .catch(err => console.log(err))
+               .finally(setIsNewMovieModalOpen(false))
+  }
+
+  async function rejectMovieOffer(movie_id: string) {
+    await axios.delete(`http://localhost:3000/api/offers/${movie_id}`)
+               .then(data => console.log(data))
+               .catch(err => console.log(err))
+               .finally(setIsNewMovieModalOpen(false))
+  }
 
   return (
     <div className="modal">
-      <div className="modal-backdrop"></div>
       <div className="modal-header">Add New Movie Advice</div>
       <button
         className="modal-close-button"
@@ -52,11 +59,15 @@ console.log("offers agas:",offers);
             </div>
             <div className="modal-movie-data-item">
               <p className="modal-movie-data-item-title">Release Year:</p>
-              <p className="modal-movie-data-item-content">{offer.release_year}</p>
+              <p className="modal-movie-data-item-content">
+                {offer.release_year}
+              </p>
             </div>
             <div className="modal-movie-data-item">
               <p className="modal-movie-data-item-title">IMDb:</p>
-              <p className="modal-movie-data-item-content">{offer.imdb_rating}</p>
+              <p className="modal-movie-data-item-content">
+                {offer.imdb_rating}
+              </p>
             </div>
             <div className="modal-movie-data-item">
               <p className="modal-movie-data-item-title">Director:</p>
@@ -64,11 +75,15 @@ console.log("offers agas:",offers);
             </div>
             <div className="modal-movie-data-item">
               <p className="modal-movie-data-item-title">First Banner:</p>
-              <p className="modal-movie-data-item-content">{offer.banner_url_first}</p>
+              <p className="modal-movie-data-item-content">
+                {offer.banner_url_first}
+              </p>
             </div>
             <div className="modal-movie-data-item">
               <p className="modal-movie-data-item-title">Second Banner:</p>
-              <p className="modal-movie-data-item-content">{offer.banner_url_second}</p>
+              <p className="modal-movie-data-item-content">
+                {offer.banner_url_second}
+              </p>
             </div>
             <div className="modal-movie-data-item">
               <p className="modal-movie-data-item-title">Summary:</p>
@@ -76,15 +91,19 @@ console.log("offers agas:",offers);
             </div>
             <div className="modal-movie-data-item">
               <p className="modal-movie-data-item-title">Story Shortly:</p>
-              <p className="modal-movie-data-item-content">{offer.story_shortly}</p>
+              <p className="modal-movie-data-item-content">
+                {offer.story_shortly}
+              </p>
             </div>
 
-            <button className="modal-button" onClick={acceptMovieOffer}>
-              <GrCheckmark />
-            </button>
-            <button className="modal-button" onClick={rejectMovieOffer}>
-              <GrClose />
-            </button>
+            <div className="modal-movie-data-buttons">
+                <button className="modal-movie-data-buttons-item" onClick={() => acceptMovieOffer(offer)}>
+                  <GrCheckmark />
+                </button>
+                <button className="modal-movie-data-buttons-item" onClick={() => rejectMovieOffer(offer._id)}>
+                  <GrClose />
+                </button>
+            </div>
           </div>
         ))}
       </div>

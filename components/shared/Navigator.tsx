@@ -4,13 +4,13 @@ import { BiPlus, BiMoviePlay } from "react-icons/bi";
 import Link from "next/link";
 import axios from "axios";
 import JWT from "jsonwebtoken";
+import { useRouter } from "next/router";
 //* Styles coming from '_navigator.scss'
 
 const Navigator: React.FC = () => {
   const { setIsNewMovieModalOpen }: Dispatch<SetStateAction<boolean>> | any = useContext(Context);
   const { currentUser, setCurrentUser }: any = useContext(Context);
-
-  //! Admin girişine göre nav da değişiklik yapılamıyor
+  const router = useRouter();
 
   useEffect(() => {    
     const decoded_user = JWT.decode(localStorage.getItem("EncodedUserDataJWT"));
@@ -18,13 +18,14 @@ const Navigator: React.FC = () => {
   }, []);
 
   const handleLogOut = () => {
+    router.push('/')
     localStorage.removeItem("EncodedUserDataJWT");
     setCurrentUser(null);
   };
 
   return (
     <nav className="navigation">
-      <Link href="#">
+      <Link href="/">
         <a className="navigation-item">Advices</a>
       </Link>
 
@@ -33,36 +34,15 @@ const Navigator: React.FC = () => {
           <a className="navigation-item">Booked</a>
         </Link>) : 
        currentUser && currentUser?.isAdmin ? (
-        <a className="navigation-item">Offers</a>
+        <Link href="/offers">
+          <a className="navigation-item">Offers</a>
+        </Link>
       ) : 
       (<Link href="/auth/login">
           <a className="navigation-item">Log In</a>
         </Link>
       )}
 
-      {/* {currentUser ? (
-        <Link href="#">
-          <a className="navigation-item">Booked</a>
-        </Link>
-      ) : (
-        <Link href="/auth/login">
-          <a className="navigation-item">Log In</a>
-        </Link>
-      )}
-
-      {currentUser?.isAdmin && (
-        <Link href="/auth/login">
-          <a className="navigation-item">Offers</a>
-        </Link>
-      )} */}
-
-      {/* <button
-        className={`navigation-button ${currentUser ? "there-is-A-user" : "there-is-NO-user"}`}
-        onClick={() => setIsNewMovieModalOpen(true)}
-      >
-        <BiPlus />
-        <BiMoviePlay />
-      </button> */}
       <button className="navigation-button" onClick={handleLogOut}>
         Log Out
       </button>

@@ -1,5 +1,4 @@
 import MovieAdvice from "../../../db/models/MovieAdvice";
-import MovieOffer from "../../../db/models/MovieOffer";
 import dbConnect from "../../../db/utils/dbConnect";
 import type { NextApiRequest, NextApiResponse } from 'next'
 
@@ -18,6 +17,18 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (method === "POST") {
     try {
+      const movie = await MovieAdvice.findOne({
+         $or: [
+          { title: req.body.title }, 
+          { release_year: req.body.release_year },
+          { director: req.body.director }
+        ] 
+      });
+      if (movie) {
+        res.status(400).json({ message: "Movie already exists" });
+        return;
+      }
+
       const newMovieAdvice = await MovieAdvice.create(req.body);
       res.status(200).json(newMovieAdvice);
     } catch (err) {

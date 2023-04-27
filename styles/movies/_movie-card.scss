@@ -65,9 +65,13 @@
         z-index: 5;
         color: #fff;
         border-radius: 50%;
-        background-color: #0a1420;
-        transition: opacity 0.4s ease;
+        background-color: #050a11;
+        transition: opacity 0.4s ease, background-color 0.2s ease;
         @include flex-center();
+
+        &:hover{
+            background-color: #101e34;
+        }
     }
 
     &-upstairs{
