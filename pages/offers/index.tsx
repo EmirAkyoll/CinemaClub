@@ -18,20 +18,25 @@ const Offers: React.FC = () => {
     getAllOffers();
   }, []);
 
+  function removeOffer(): any {
+    const offer_to_be_removed: any = document.getElementById('offer');
+    offer_to_be_removed.parentNode.removeChild(offer_to_be_removed);
+  }
+
   async function acceptMovieOffer(movie_offer: IMovie) {
     console.log(movie_offer);
     await axios.delete(`http://localhost:3000/api/offers/${movie_offer._id}`);
     await axios.post("http://localhost:3000/api/movies", movie_offer)
                .then((data) => console.log(data))
                .catch((err) => console.log(err))
-               .finally(setIsNewMovieModalOpen(false));
+               .finally(removeOffer());
   }
 
   async function rejectMovieOffer(movie_id: string) {
     await axios.delete(`http://localhost:3000/api/offers/${movie_id}`)
                .then((data) => console.log(data))
                .catch((err) => console.log(err))
-               .finally(setIsNewMovieModalOpen(false));
+               .finally(removeOffer());
   }
 
   return (
@@ -40,7 +45,7 @@ const Offers: React.FC = () => {
       {(offers?.length > 0) ? (
         <div className="offers-movie">
           {offers?.map((offer: any) => (
-            <div className="offers-movie-data">
+            <div className="offers-movie-data" id="offer" key={offer._id}>
               <div className="offers-movie-data-item">
                 <p className="offers-movie-data-item-title">Title:</p>
                 <p className="offers-movie-data-item-content">{offer.title}</p>
@@ -83,11 +88,11 @@ const Offers: React.FC = () => {
               </div>
 
               <div className="offers-movie-data-buttons">
-                <button className="offers-movie-data-buttons-item" onClick={() => acceptMovieOffer(offer)}>
+                <button className="offers-movie-data-buttons-item" onClick={() => {acceptMovieOffer(offer)}}>
                   <GrCheckmark />
                 </button>
 
-                <button className="offers-movie-data-buttons-item" onClick={() => rejectMovieOffer(offer._id)}>
+                <button className="offers-movie-data-buttons-item" onClick={() => {rejectMovieOffer(offer._id)}}>
                   <GrClose />
                 </button>
               </div>

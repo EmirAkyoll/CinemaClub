@@ -2,15 +2,12 @@ import React, { useEffect, useContext } from "react";
 import MovieCard from "./MovieCard";
 import { Context } from "../../context/state";
 import { IMovieCardsProps } from "@/interfaces/imovies";
-import MovieComment from "./MovieComment";
 import JWT from "jsonwebtoken";
 import { BiPlus, BiMoviePlay } from "react-icons/bi";
-import OffersModal from "./OffersModal";
 //* Styles coming from '_movie-field.scss'
 
 const MovieField: React.FC<IMovieCardsProps> = ({ movies }) => {
-  const { currentUser, setCurrentUser, setIsNewMovieModalOpen }: any =
-    useContext(Context);
+  const { currentUser, setCurrentUser, setIsNewMovieModalOpen }: any = useContext(Context);
 
   useEffect(() => {
     const decoded_user = JWT.decode(localStorage.getItem("EncodedUserDataJWT"));
@@ -30,9 +27,7 @@ const MovieField: React.FC<IMovieCardsProps> = ({ movies }) => {
         </button>
         {movies?.map((movie) => (
           <MovieCard key={movie?._id} movie={movie} />
-        ))}
-        
-        {/* <OffersModal /> */}
+        ))}        
       </div>
     </div>
   );

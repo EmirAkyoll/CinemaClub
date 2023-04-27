@@ -11,9 +11,9 @@ const MovieCard: React.FC<IMovieCardProps> = ({ movie }) => {
 
   return (
     <div className="movie-card">
-      {!currentUser?.isAdmin && (
+      {(currentUser && !currentUser?.isAdmin) && (
         <div className="movie-card-bookmark">
-          <FaRegBookmark />
+          {false ? <FaBookmark /> : <FaRegBookmark />}
         </div>
       )}
       <Link href={`/movies/${movie._id}`}>

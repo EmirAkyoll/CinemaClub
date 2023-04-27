@@ -8,17 +8,18 @@ import { useRouter } from "next/router";
 //* Styles coming from '_navigator.scss'
 
 const Navigator: React.FC = () => {
-  const { setIsNewMovieModalOpen }: Dispatch<SetStateAction<boolean>> | any = useContext(Context);
+  const { setIsNewMovieModalOpen }: Dispatch<SetStateAction<boolean>> | any =
+    useContext(Context);
   const { currentUser, setCurrentUser }: any = useContext(Context);
   const router = useRouter();
 
-  useEffect(() => {    
+  useEffect(() => {
     const decoded_user = JWT.decode(localStorage.getItem("EncodedUserDataJWT"));
     setCurrentUser(decoded_user);
   }, []);
 
   const handleLogOut = () => {
-    router.push('/')
+    router.push("/");
     localStorage.removeItem("EncodedUserDataJWT");
     setCurrentUser(null);
   };
@@ -30,15 +31,15 @@ const Navigator: React.FC = () => {
       </Link>
 
       {currentUser && !currentUser?.isAdmin ? (
-        <Link href="/booked">
-          <a className="navigation-item">Booked</a>
-        </Link>) : 
-       currentUser && currentUser?.isAdmin ? (
+        <Link href="/bookmarks">
+          <a className="navigation-item">Bookmarks</a>
+        </Link>
+      ) : currentUser && currentUser?.isAdmin ? (
         <Link href="/offers">
           <a className="navigation-item">Offers</a>
         </Link>
-      ) : 
-      (<Link href="/auth/login">
+      ) : (
+        <Link href="/auth/login">
           <a className="navigation-item">Log In</a>
         </Link>
       )}
