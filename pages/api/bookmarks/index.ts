@@ -13,27 +13,34 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const bookmarks = await User.aggregate([{
                         $lookup: {
                           from: "movies",
-                          localField: "bookmarked",
+                          localField: "bookmarks",
                           foreignField: "_id",
-                          as: "bookmarks",
+                          as: "bookmarked",
                         }}
                       ]);
-
-      const movie_advices = await MovieAdvice.find();
-      res.status(200).json(movie_advices);
+console.log(bookmarks);
+                      
+      // const movie_advices = await MovieAdvice.find();
+      res.status(200).json(bookmarks);
     } catch (err) {
       console.log(err);
     }
   }
-
-  if (method === "POST") {
-    try {
-      const newMovieAdvice = await MovieAdvice.create(req.body);
-      res.status(200).json(newMovieAdvice);
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  
+  // if (method === "POST") {
+  //   try {
+  //     const updated_user = User.updateOne(
+  //       { _id: id }, //user id matching
+  //       { $push: { bookmarks: req.body._id } } //adding movie id to 'bookmarks'
+  //     )
+  //       console.log("movie id yi bookmarks a ekleme, user_id ve movie_id: ", id, body._id);
+        
+  //     // const newMovieAdvice = await MovieAdvice.create(req.body);
+  //     res.status(200).json(updated_user);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
 };
 
 export default handler;

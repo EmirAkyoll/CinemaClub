@@ -15,11 +15,12 @@ const RegisterModule: React.FC = () => {
     user_name: "",
     password: "",
     e_mail: "",
+    bookmarks: []
   });
 
   async function sendUserData() {
     await axios
-      .post("/api/users", userData)
+      .post("/api/users/register", userData)
       .then((data) => console.log(data))
       .catch((err) => console.log(err))
       .finally(() => router.push("/auth/login"));

@@ -3,15 +3,17 @@ import { Context } from "../../context/state";
 import MovieField from "../../components/movies/MovieField";
 import { IMovieCardsProps } from "@/interfaces/imovies";
 import AddMovieOfferModal from "../../components/movies/AddMovieOfferModal";
-// import axios from "axios";
 
-const Movies: React.FC<IMovieCardsProps> = ({movies}) => {
+const Movies: React.FC<IMovieCardsProps | any> = ({movies, booked_movies_ids}) => {
   const { isNewMovieModalOpen }: boolean | any = useContext(Context);
 
   return (
     <>
       {isNewMovieModalOpen && <AddMovieOfferModal />}
-      <MovieField movies={movies} />
+      <MovieField 
+        movies={movies}
+        booked_movies_ids={booked_movies_ids}
+      />
     </>
   );
 };

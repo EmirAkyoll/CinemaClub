@@ -1,19 +1,38 @@
-import React, { useEffect, useContext } from "react";
-import { IMovieCardProps } from "@/interfaces/imovies";
+import React, { useEffect, useContext, useState } from "react";
+import { IMovie, IMovieCardProps } from "@/interfaces/imovies";
 import { AiFillLike, AiFillDislike } from "react-icons/ai";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 import Link from "next/link";
 import { Context } from "../../context/state";
+import axios from "axios";
 //* Styles coming from '_movie-card.scss'
 
-const MovieCard: React.FC<IMovieCardProps> = ({ movie }) => {
+const MovieCard: React.FC<IMovieCardProps | any> = ({ movie }) => {
   const { currentUser }: any = useContext(Context);
+  const [isBooked, setIsBooked] = useState<boolean>(false)
+// console.log("GAGATAŞI: ", currentUser.bookmarks);
+
+  async function bookingOperation(movie_id: IMovie | any) {
+    await axios.post(`http://localhost:3000/api/bookmarks/${currentUser.id}`, {movie_id, isBooked})
+    console.log(isBooked);
+    setIsBooked(!isBooked)
+    console.log(isBooked);
+    
+  }
+
+  // useEffect(() => {
+  //   async function getAllBookmarks() {
+  //     const res_bookmarked = await axios.get(`http://localhost:3000/api/bookmarks`);
+  //   }
+
+  //   getAllBookmarks();
+  // }, []);
 
   return (
     <div className="movie-card">
       {(currentUser && !currentUser?.isAdmin) && (
-        <div className="movie-card-bookmark">
-          {false ? <FaBookmark /> : <FaRegBookmark />}
+        <div className="movie-card-bookmark" onClick={() => bookingOperation(movie._id)}>
+          {(isBooked || currentUser.bookmarks.includes(movie._id)) ? <FaBookmark /> : <FaRegBookmark />}
         </div>
       )}
       <Link href={`/movies/${movie._id}`}>

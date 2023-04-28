@@ -37,6 +37,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
               id: user._id,
               username: user.user_name,
               email: user.e_mail,
+              bookmarks: user?.bookmarks
             },
             secret
           );
