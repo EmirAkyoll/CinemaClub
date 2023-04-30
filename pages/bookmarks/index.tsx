@@ -8,6 +8,7 @@ import axios from "axios";
 
 export const getServerSideProps = async () => {
   const res_bookmarked = await axios.get(`http://localhost:3000/api/bookmarks`);
+    console.log("ferad: ", res_bookmarked.data);
     
   return {
     props: {

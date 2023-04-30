@@ -3,6 +3,8 @@ import { FiUser, FiLock } from "react-icons/fi";
 import { IUser } from "@/interfaces/iusers";
 import { Context } from "../../context/state";
 import { useRouter } from "next/router";
+import { useFormik } from "formik";
+import { loginSchema } from "../../yup/login";
 import Link from "next/link";
 import axios from "axios";
 import JWT from "jsonwebtoken";
@@ -10,13 +12,10 @@ import JWT from "jsonwebtoken";
 
 const LoginModule: React.FC = () => {
   const { currentUser, setCurrentUser }: any = useContext(Context);
-
   const router = useRouter();
-  const [username, setUserName] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
 
   const handleLogIn = async () => {
-    const credentials = { username, password };
+    const credentials = values;
     await axios.post("/api/auth/login", credentials)
                .then((res_as_user_token) => {
                 //  console.log(JWT.decode(res_as_user_token.data));
@@ -32,9 +31,18 @@ const LoginModule: React.FC = () => {
     setCurrentUser(null);
   };
 
+  const {values, errors, touched, isSubmitting, handleBlur, handleChange, handleSubmit} = useFormik({
+    initialValues: {
+      username: "",
+      password: "",
+    },
+    validationSchema: loginSchema,
+    onSubmit: handleLogIn,
+  });
+
   return (
     <div className="auth">
-        <div className="auth-module">
+      <form className="auth-module" onSubmit={handleSubmit}>
         <h2 className="auth-module-header">Login</h2>
           <div className="auth-module-section">
             <FiUser className="auth-module-section-icon" />
@@ -42,12 +50,14 @@ const LoginModule: React.FC = () => {
               type="text"
               id="username"
               name="username"
-              value={username}
+              value={values.username}
               autoComplete="off"
               placeholder="Username"
               className="auth-module-section-textbox"
-              onChange={(e) => setUserName(e.target.value)}
+              onChange={handleChange}
+              onBlur={handleBlur}
             />
+            {errors.username && touched.username && <p className="auth-module-section-error">{errors.username}</p>}
             {/* <label htmlFor="username" className="auth-module-section-label">User Name</label> */}
           </div>
 
@@ -57,12 +67,14 @@ const LoginModule: React.FC = () => {
               type="password"
               id="password"
               name="password"
-              value={password}
+              value={values.password}
               autoComplete="off"
               placeholder="Password"
               className="auth-module-section-textbox"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handleChange}
+              onBlur={handleBlur}
             />
+            {errors.password && touched.password && <p className="auth-module-section-error">{errors.password}</p>}
             {/* <label htmlFor="password" className="auth-module-section-label">Password</label> */}
           </div>
 
@@ -74,14 +86,14 @@ const LoginModule: React.FC = () => {
             .
           </p>
 
-          <button className="auth-module-button" onClick={handleLogIn}>
+          <button className="auth-module-button" disabled={isSubmitting}>
             Log In
           </button>
 
           {/* <button className="auth-module-button" onClick={handleLogOut}>
             Log Out
           </button> */}
-        </div>
+        </form>
     </div>
   );
 };

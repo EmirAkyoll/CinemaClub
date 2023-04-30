@@ -59,6 +59,13 @@
                 pointer-events: none;
                 transition: 0.4s;
             }
+
+            &-error{
+                position: absolute;
+                top: 60px;
+                color: red;
+                font-size: 14px;
+            }
         }
 
         &-routing-text {

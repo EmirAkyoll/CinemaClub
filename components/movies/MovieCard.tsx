@@ -26,7 +26,7 @@ const MovieCard: React.FC<IMovieCardProps | any> = ({ movie, booked_movies_ids }
     <div className="movie-card">
       {(currentUser && !currentUser?.isAdmin) && (
         <div className="movie-card-bookmark" onClick={() => bookingOperation(movie._id)}>
-          {(isBooked || booked_movies_ids.includes(movie._id)) ? <FaBookmark /> : <FaRegBookmark />}
+          {(isBooked) ? <FaBookmark /> : <FaRegBookmark />}
         </div>
       )}
       <Link href={`/movies/${movie._id}`}>

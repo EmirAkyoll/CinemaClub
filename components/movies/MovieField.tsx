@@ -22,9 +22,9 @@ const MovieField: React.FC<IMovieCardsProps | any> = ({ movies }) => {
     }
 
     getAllBooked();
-    // const decoded_user = JWT.decode(localStorage.getItem("EncodedUserDataJWT"));
-    // setCurrentUser(decoded_user);
-  }, [booked_movies_ids]);
+    const decoded_user = JWT.decode(localStorage.getItem("EncodedUserDataJWT"));
+    setCurrentUser(decoded_user);
+  }, []);
   console.log("current aga: ", currentUser);
 
   return (

@@ -1,7 +1,6 @@
 export const user_schema = {
     _id: {
         type: String,
-        required: true,
     },
 
     user_name: {
@@ -22,6 +21,5 @@ export const user_schema = {
 
     bookmarks: {
         type: [String],
-        required: true,
     }
 }

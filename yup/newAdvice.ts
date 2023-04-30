@@ -1,6 +1,8 @@
 import * as Yup from "yup";
 
 export const newMovieAdviceSchema = Yup.object({
+  _id: Yup.string().uuid(),
+
   title: Yup.string()
     .required("Title is required."),
 
@@ -29,14 +31,18 @@ export const newMovieAdviceSchema = Yup.object({
     .required("Director name is required."),
 
   banner_url_first: Yup.string()
-    .required("First Banner URL is required."),
+    .required("First Banner URL is required.")
+    .url(),
 
   banner_url_second: Yup.string()
-    .required("Second Banner URL is required."),
+    .required("Second Banner URL is required.")
+    .url(),
  
   summary: Yup.string()
     .required("Summary is required."),
  
   story_shortly: Yup.string()
     .required("Story is required."),
+
+  comments: Yup.array().of(Yup.string().uuid())
 });

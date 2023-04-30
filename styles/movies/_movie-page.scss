@@ -102,13 +102,13 @@
             background: linear-gradient(to right, #ff0000, #ba0dba);
             border-radius: 5px;
             padding: 2px;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 14;
-            overflow: hidden;
-            text-overflow: ellipsis;
             
             &-content {
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 14;
+                overflow: hidden;
+                text-overflow: ellipsis;
                 border-radius: 5px;
                 background: #222;
                 color: white;

@@ -1,6 +1,8 @@
 import * as Yup from "yup";
 
 export const registerSchema = Yup.object({
+  _id: Yup.string().uuid(),
+
   user_name: Yup.string()
     .required("User name is required.")
     .min(3, "Full name must be at least 3 characters."),
@@ -17,8 +19,5 @@ export const registerSchema = Yup.object({
       "Inappropriate email entry."
     ),
 
-  // confirmPassword: Yup.string()
-  //   .required("Confirm password is required.")
-  //   .nullable()
-  //   .oneOf([Yup.ref("password"), null], "Passwords must match."),
+    bookmarks: Yup.array().of(Yup.string().uuid())
 });
