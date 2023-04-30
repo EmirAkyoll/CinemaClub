@@ -63,4 +63,9 @@ export const movie_schema = {
         type: String,
         required: true,
     },
+
+    comments: {
+        type: [String],
+        required: true,
+    },
 }

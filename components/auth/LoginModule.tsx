@@ -20,11 +20,8 @@ const LoginModule: React.FC = () => {
     await axios.post("/api/auth/login", credentials)
                .then((res_as_user_token) => {
                 //  console.log(JWT.decode(res_as_user_token.data));
-                 localStorage.setItem("EncodedUserDataJWT", res_as_user_token.data);
-                 
-                 setCurrentUser(res_as_user_token.data);
-                 console.log("current: ",currentUser);
-                 
+                 localStorage.setItem("EncodedUserDataJWT", res_as_user_token.data);                 
+                 setCurrentUser(JWT.decode(res_as_user_token.data));
                })
                .then(() => router.push("/"))
                .catch((err) => console.log(err));               

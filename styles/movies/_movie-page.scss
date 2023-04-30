@@ -13,7 +13,7 @@
         background-color: $black;
         font-size: 50px;
         padding: 15px;
-        padding-top: 0;
+        padding-top: 10px;
         margin-bottom: 35px;
         border-radius: 0 0 30px 30px;
         position: sticky;
@@ -39,7 +39,7 @@
             color: $white;
             background-color: #080712;
             padding: 12px;
-            border-radius: 40% 0 0 0;
+            border-radius: 3px;
         }
     }
 
@@ -57,27 +57,64 @@
         }
     }
 
+    &-comment-entry{
+        margin-top: 50px;
+        margin-bottom: 10px;
+        width: 50%;
+        @include flex-center(row){
+            justify-content: space-between;
+        }
+
+        &-textbox{
+            width: 80%;
+            height: 50px;
+            background: transparent;
+            border: none;
+            border-bottom: 1px #fff solid;
+            outline: none;
+            font-size: 1em;
+            padding: 0 35px 0 5px;
+            color: #fff;
+        }
+
+        &-button{
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            color: #fff;
+            padding: 13px 18px;
+            background-color: #000;
+            border: 1px #fff solid;
+        }
+    }
+
     &-comments{
         display: grid; 
         grid-template-columns: 1fr 1fr 1fr; 
-        // grid-template-rows: 1fr 1fr 1fr; 
         gap: 50px 50px; 
         margin-top: 80px;
         
         &-item{
-            max-width: 250px;
+            width: 300px;
+            // height: 300px;
             padding: 1rem;
             position: relative;
             background: linear-gradient(to right, #ff0000, #ba0dba);
             border-radius: 5px;
             padding: 2px;
-    
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 14;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            
             &-content {
                 border-radius: 5px;
                 background: #222;
                 color: white;
                 padding: 2rem;
-                text-align: center;
+                text-align: justify;
+                height: 250px;
             }
         }
     }

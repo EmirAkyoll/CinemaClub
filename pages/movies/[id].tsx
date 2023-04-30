@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { IMovie } from "@/interfaces/imovies";
 
@@ -14,7 +14,12 @@ export const getServerSideProps = async ({ params }: any) => {
 };
 
 const Movie: React.FC<IMovie | any> = ({ movie }) => {
-  console.log(movie);
+  const [comment, setComment] = useState<string>('')
+  console.log("movie: ",movie, "comment: ",comment);
+
+  async function sendComment() {
+    await axios.post(`http://localhost:3000/api/movies/${movie._id}`, {comment});
+  }
 
   return (
     <div className="movie-page">
@@ -43,55 +48,31 @@ const Movie: React.FC<IMovie | any> = ({ movie }) => {
         <p className="movie-page-texts-item">{movie.story_shortly}</p>
       </div>
 
+      <div className="movie-page-comment-entry">
+        <input 
+          type="text" 
+          name="comment" 
+          id="comment"
+          className="movie-page-comment-entry-textbox"
+          placeholder="Enter your comment.."
+          onChange={(e) => setComment(e.target.value)}
+        />
+        <button 
+          type="submit"
+          onClick={sendComment}
+          className="movie-page-comment-entry-button"  
+        >
+          Send
+        </button>
+      </div>
       <div className="movie-page-comments">
+      {movie?.comments.map((comment: any) => (  
         <div className="movie-page-comments-item">
           <div className="movie-page-comments-item-content">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo aperiam
-            dicta, ullam, nemo quis quibusdam porro tenetur.
+            {comment}
           </div>
         </div>
-        <div className="movie-page-comments-item">
-          <div className="movie-page-comments-item-content">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo aperiam
-            dicta, ullam, nemo quis quibusdam porro tenetur.
-          </div>
-        </div>
-        <div className="movie-page-comments-item">
-          <div className="movie-page-comments-item-content">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo aperiam
-            dicta, ullam, nemo quis quibusdam porro tenetur.
-          </div>
-        </div>
-        <div className="movie-page-comments-item">
-          <div className="movie-page-comments-item-content">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo aperiam
-            dicta, ullam, nemo quis quibusdam porro tenetur.
-          </div>
-        </div>
-        <div className="movie-page-comments-item">
-          <div className="movie-page-comments-item-content">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo aperiam
-            dicta, ullam, nemo quis quibusdam porro tenetur.
-          </div>
-        </div>
-        <div className="movie-page-comments-item">
-          <div className="movie-page-comments-item-content">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo aperiam
-            dicta, ullam, nemo quis quibusdam porro tenetur.
-          </div>
-        </div>
-        <div className="movie-page-comments-item">
-          <div className="movie-page-comments-item-content">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo aperiam
-            dicta, ullam, nemo quis quibusdam porro tenetur.
-          </div>
-        </div>
-        <div className="movie-page-comments-item">
-          <div className="movie-page-comments-item-content">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo aperiam
-            dicta, ullam, nemo quis quibusdam porro tenetur.
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

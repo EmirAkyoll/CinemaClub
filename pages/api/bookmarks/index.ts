@@ -18,7 +18,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                           as: "bookmarked",
                         }}
                       ]);
-console.log(bookmarks);
+// console.log(bookmarks);
                       
       // const movie_advices = await MovieAdvice.find();
       res.status(200).json(bookmarks);

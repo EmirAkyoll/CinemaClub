@@ -16,15 +16,13 @@ export const getServerSideProps = async () => {
   };
 };
 
-const BookmarkedMovies: React.FC<IMovieCardsProps | any> = ({ bookmarked_movies, booked_movies_ids }) => {
+const BookmarkedMovies: React.FC<IMovieCardsProps | any> = ({ bookmarked_movies }) => {
   const { isNewMovieModalOpen }: boolean | any = useContext(Context);
-// console.log("booked movies: ",bookmarked_movies[0].bookmarked);
 
   return (
     <>
       <MovieField 
         movies={bookmarked_movies[0].bookmarked} 
-        booked_movies_ids={booked_movies_ids}
       />
     </>
   );

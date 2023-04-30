@@ -12,6 +12,7 @@ export interface IMovie {
   director: string;
   summary: string;
   story_shortly: string;
+  comments: string[];
 }
 
 export interface IMovieCardsProps {

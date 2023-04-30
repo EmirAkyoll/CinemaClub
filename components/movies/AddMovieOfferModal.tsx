@@ -22,6 +22,7 @@ const AddMovieAdviceModal: React.FC = () => {
     story_shortly: "",
     likes: 0,
     dislikes: 0,
+    comments: [],
   });
 
   async function sendMovieData() { 
