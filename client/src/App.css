@@ -1,0 +1,18 @@
+ .App {
+  text-align: center;
+  background-color: #000;
+  height: calc(100% + 20vh);
+  /* width: 100%; */
+  position: relative;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+.auth-module-section-error{
+  position: absolute;
+  top: 40px;
+  color: red;
+  font-size: 14px;
+}

@@ -1,0 +1,129 @@
+.movie-page {
+    height: 100%;
+    background-color: #000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    /* padding-top: 30px; */
+    padding-bottom: 150px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.movie-page-comments {
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    gap: 50px 50px; 
+    margin-top: 80px;
+}
+
+.movie-page-comments-item {
+    width: 300px;
+    padding: 1rem;
+    position: relative;
+    background: linear-gradient(to right, #ff0000, #ba0dba);
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.movie-page-comments-item-content {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 14;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: 5px;
+    background: #222;
+    color: white;
+    padding: 2rem;
+    text-align: justify;
+    height: 250px;
+}
+
+.movie-page-comment-entry {
+    margin-top: 50px;
+    margin-bottom: 10px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.movie-page-comment-entry-textbox {
+    width: 80%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px #fff solid;
+    outline: none;
+    font-size: 1em;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.movie-page-comment-entry-button {
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #fff;
+    padding: 13px 18px;
+    background-color: #000;
+    border: 1px #fff solid;
+}
+
+.movie-page-texts {
+    color: white;
+    max-width: 60%;
+    margin-top: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.movie-page-texts-item {
+    text-align: justify;
+    line-height: 25px;
+}
+
+.movie-page-showcase{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 100px;
+}
+
+.movie-page-showcase-banner{
+    width: 250px;
+    height: 350px;
+}
+
+.movie-page-showcase-genre{
+    border: 1px #aaa solid;
+    position: absolute;
+    bottom: -25px;
+    right: 0px;
+    color: white;
+    background-color: #080712;
+    padding: 12px;
+    border-radius: 3px;
+}
+
+.movie-page-header{
+    color: white;
+    background-color: black;
+    font-size: 50px;
+    padding: 15px;
+    padding-top: 10px;
+    margin-bottom: 50px;
+    border-radius: 0 0 30px 30px;
+    position: sticky;
+    top: 100px;
+    z-index: 20;
+}
